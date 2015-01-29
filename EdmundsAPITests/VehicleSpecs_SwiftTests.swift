@@ -121,4 +121,81 @@ class VehicleSpecs_SwiftTests: XCTestCase {
         })
     }
     
+    func testGetStyleDetailsByID() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getStyleDetailsByID(id: "200487199", view: EdmundsAPIManager.VIEW.kFULL) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
+    
+    func testGetStylesDetailsByVehicleMakeModelYear() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getStylesDetailsByVehicleMakeModelYear(makeNiceName: "honda", modelNiceName: "pilot", year: "2010", state: EdmundsAPIManager.STATE.kUSED, category: EdmundsAPIManager.CATEGORY.k4DRSUV, view: EdmundsAPIManager.VIEW.kFULL) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
+    
+    func testGetStylesCountByVehicleMakeModelYear() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getStylesCountByVehicleMakeModelYear(makeNiceName: "honda", modelNiceName: "pilot", year: "2010", state: EdmundsAPIManager.STATE.kUSED) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
+    
+    func testGetStylesCountByVehicleMakeAndModel() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getStylesCountByVehicleMakeAndModel(makeNiceName: "honda", modelNiceName: "pilot", state: EdmundsAPIManager.STATE.kUSED) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
+    
+    func testGetStylesCountByVehicleMake() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getStylesCountByVehicleMake(makeNiceName: "honda", state: EdmundsAPIManager.STATE.kUSED) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
+    
+    func testGetStylesCount() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getStylesCount(state: EdmundsAPIManager.STATE.kUSED) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
+    
+    func testGetStylesDetailsByVehicleChromeID() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getStylesDetailsByVehicleChromeID(chromeId: "11916", view: EdmundsAPIManager.VIEW.kFULL) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
+    
 }

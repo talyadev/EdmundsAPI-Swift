@@ -166,18 +166,109 @@ class EdmundsAPIManager {
     }
     
     /**
-    Get Car Model Years Count by Vehicle Make and Model Nicenames
-    Get the total count of car make years for a specific car make and model.
-    
-    :param: makeNiceName Car make niceName (you get the niceName from the Get All Car Makes endpoint in the Vehicle Makes resource)
-    :param: modelNiceName Car model niceName
-    :param: state The state of the car make
-    :param: view The response payload
-    :param: edmundResponse The response from Edmund API on completion
+        Get Car Model Years Count by Vehicle Make and Model Nicenames
+        Get the total count of car make years for a specific car make and model.
+        
+        :param: makeNiceName Car make niceName (you get the niceName from the Get All Car Makes endpoint in the Vehicle Makes resource)
+        :param: modelNiceName Car model niceName
+        :param: state The state of the car make
+        :param: view The response payload
+        :param: edmundResponse The response from Edmund API on completion
     */
     func getCarModelYearsCountByVehicleMakeAndModelNicenames(#makeNiceName: String, modelNiceName: String, state: STATE, view: VIEW, edmundResponse: EdmundResponse) -> Void {
         vehicleSpecs.getCarModelYearsCountByVehicleMakeAndModelNicenames(makeNiceName: makeNiceName, modelNiceName: modelNiceName, state: state, view: view, edmundResponse: edmundResponse)
     }
+    
+    /**
+        Get Style Details by ID
+        Get vehicle style details by Edmunds vehicle style ID.
+        
+        :param: id Edmunds vehicle style ID
+        :param: view The response payload
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getStyleDetailsByID(#id: String, view: VIEW, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getStyleDetailsByID(id: id, view: view, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get Styles Details by Vehicle Make/Model/Year
+        Get vehicle style details by vehicle make and model niceNames and year.
+        
+        :param: makeNiceName Car make niceName (you get the niceName from the Get All Car Makes endpoint in the Vehicle Makes resource)
+        :param: modelNiceName Car model niceName
+        :param: year The four-digit year of interest
+        :param: state The state of the car make
+        :param: category Vehicle category
+        :param: view The response payload
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getStylesDetailsByVehicleMakeModelYear(#makeNiceName: String, modelNiceName: String, year: String, state: STATE, category: CATEGORY, view: VIEW, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getStylesDetailsByVehicleMakeModelYear(makeNiceName: makeNiceName, modelNiceName: modelNiceName, year: year, state: state, category: category, view: view, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get Styles Count by Vehicle Make/Model/Year
+        Get vehicle style count by vehicle make and model niceNames and year.
+        
+        :param: makeNiceName Car make niceName (you get the niceName from the Get All Car Makes endpoint in the Vehicle Makes resource)
+        :param: modelNiceName Car model niceName
+        :param: year The four-digit year of interest
+        :param: state The state of the car make
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getStylesCountByVehicleMakeModelYear(#makeNiceName: String, modelNiceName: String, year: String, state: STATE, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getStylesCountByVehicleMakeModelYear(makeNiceName: makeNiceName, modelNiceName: modelNiceName, year: year, state: state, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get Styles Count by Vehicle Make and Model
+        Get vehicle style count by vehicle make and model niceNames.
+        
+        :param: makeNiceName Car make niceName (you get the niceName from the Get All Car Makes endpoint in the Vehicle Makes resource)
+        :param: modelNiceName Car model niceName
+        :param: state The state of the car make
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getStylesCountByVehicleMakeAndModel(#makeNiceName: String, modelNiceName: String, state: STATE, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getStylesCountByVehicleMakeAndModel(makeNiceName: makeNiceName, modelNiceName: modelNiceName, state: state, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get Styles Count by Vehicle Make
+        Get vehicle style count by vehicle make niceNames.
+        
+        :param: makeNiceName Car make niceName (you get the niceName from the Get All Car Makes endpoint in the Vehicle Makes resource)
+        :param: state The state of the car make
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getStylesCountByVehicleMake(#makeNiceName: String, state: STATE, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getStylesCountByVehicleMake(makeNiceName: makeNiceName, state: state, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get Styles Count
+        Get vehicle style count.
+        
+        :param: state The state of the car make
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getStylesCount(#state: STATE, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getStylesCount(state: state, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get Styles Details by Vehicle Chrome ID
+        Get vehicle style details by Chrome Data vehicle ID. **this is an endpoint only provided to explicit partners of both Chrome Data and Edmunds.com, please Edmunds to inquire.
+        
+        :param: chromeId The Chrome ID for a vehicle
+        :param: view The response payload
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getStylesDetailsByVehicleChromeID(#chromeId: String, view: VIEW, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getStylesDetailsByVehicleChromeID(chromeId: chromeId, view: view, edmundResponse: edmundResponse)
+    }
+    
     
     /**
         Get JSON data

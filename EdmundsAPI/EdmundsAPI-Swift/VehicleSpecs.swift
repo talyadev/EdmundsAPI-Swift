@@ -136,4 +136,95 @@ class VehicleSpecs {
         })
     }
     
+    func getStyleDetailsByID(#id: String, view: EdmundsAPIManager.VIEW, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+        let URLString = "https://api.edmunds.com/api/vehicle/v2/styles/\(id)?view=\(view.rawValue)&fmt=json&api_key=\(manager.kAPIKEY)"
+        manager.getJSON(URLString, dataResponse: { (data: NSData?, error: NSError?) -> Void in
+            if let err = error {
+                edmundResponse(nil, err)
+            }
+            else {
+                let dictionary = self.manager.parseJSON(data!)
+                edmundResponse(dictionary, nil)
+            }
+        })
+    }
+    
+    func getStylesDetailsByVehicleMakeModelYear(#makeNiceName: String, modelNiceName: String, year: String, state: EdmundsAPIManager.STATE, category: EdmundsAPIManager.CATEGORY, view: EdmundsAPIManager.VIEW, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+        let URLString = "https://api.edmunds.com/api/vehicle/v2/\(makeNiceName)/\(modelNiceName)/\(year)/styles?state=\(state.rawValue)&category=\(category.rawValue)&view=\(view.rawValue)&fmt=json&api_key=\(manager.kAPIKEY)"
+        manager.getJSON(URLString, dataResponse: { (data: NSData?, error: NSError?) -> Void in
+            if let err = error {
+                edmundResponse(nil, err)
+            }
+            else {
+                let dictionary = self.manager.parseJSON(data!)
+                edmundResponse(dictionary, nil)
+            }
+        })
+    }
+    
+    func getStylesCountByVehicleMakeModelYear(#makeNiceName: String, modelNiceName: String, year: String, state: EdmundsAPIManager.STATE, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+        let URLString = "https://api.edmunds.com/api/vehicle/v2/\(makeNiceName)/\(modelNiceName)/\(year)/styles/count?state=\(state.rawValue)&fmt=json&api_key=\(manager.kAPIKEY)"
+        manager.getJSON(URLString, dataResponse: { (data: NSData?, error: NSError?) -> Void in
+            if let err = error {
+                edmundResponse(nil, err)
+            }
+            else {
+                let dictionary = self.manager.parseJSON(data!)
+                edmundResponse(dictionary, nil)
+            }
+        })
+    }
+    
+    func getStylesCountByVehicleMakeAndModel(#makeNiceName: String, modelNiceName: String, state: EdmundsAPIManager.STATE, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+        let URLString = "https://api.edmunds.com/api/vehicle/v2/\(makeNiceName)/\(modelNiceName)/styles/count?state=\(state.rawValue)&fmt=json&api_key=\(manager.kAPIKEY)"
+        manager.getJSON(URLString, dataResponse: { (data: NSData?, error: NSError?) -> Void in
+            if let err = error {
+                edmundResponse(nil, err)
+            }
+            else {
+                let dictionary = self.manager.parseJSON(data!)
+                edmundResponse(dictionary, nil)
+            }
+        })
+    }
+    
+    func getStylesCountByVehicleMake(#makeNiceName: String, state: EdmundsAPIManager.STATE, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+        let URLString = "https://api.edmunds.com/api/vehicle/v2/\(makeNiceName)/styles/count?state=\(state.rawValue)&fmt=json&api_key=\(manager.kAPIKEY)"
+        manager.getJSON(URLString, dataResponse: { (data: NSData?, error: NSError?) -> Void in
+            if let err = error {
+                edmundResponse(nil, err)
+            }
+            else {
+                let dictionary = self.manager.parseJSON(data!)
+                edmundResponse(dictionary, nil)
+            }
+        })
+    }
+    
+    func getStylesCount(#state: EdmundsAPIManager.STATE, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+        let URLString = "https://api.edmunds.com/api/vehicle/v2/styles/count?state=\(state.rawValue)&fmt=json&api_key=\(manager.kAPIKEY)"
+        manager.getJSON(URLString, dataResponse: { (data: NSData?, error: NSError?) -> Void in
+            if let err = error {
+                edmundResponse(nil, err)
+            }
+            else {
+                let dictionary = self.manager.parseJSON(data!)
+                edmundResponse(dictionary, nil)
+            }
+        })
+    }
+    
+    func getStylesDetailsByVehicleChromeID(#chromeId: String, view: EdmundsAPIManager.VIEW, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+        let URLString = "https://api.edmunds.com/api/vehicle/v2/partners/chrome/styles/\(chromeId)?view=\(view.rawValue)&fmt=json&api_key=\(manager.kAPIKEY)"
+        manager.getJSON(URLString, dataResponse: { (data: NSData?, error: NSError?) -> Void in
+            if let err = error {
+                edmundResponse(nil, err)
+            }
+            else {
+                let dictionary = self.manager.parseJSON(data!)
+                edmundResponse(dictionary, nil)
+            }
+        })
+    }
+    
 }
