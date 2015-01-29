@@ -43,13 +43,30 @@ class EdmundsAPIManager {
         case kPASSENGERMINIVAN = "Passenger+Minivan"
     }
     
+    enum CATEGORYOPTIONS: String {
+        case kINTERIOR = "Interior"
+        case kEXTERIOR = "Exterior"
+        case kROOF = "Roof"
+        case kINTERIORTRIM = "Interior+Trim"
+        case kMECHANICAL = "Mechanical"
+        case kPACKAGE = "Package"
+        case kADDITIONALFEES = "Additional+Fees"
+        case kOTHER = "Other"
+    }
+    
+    enum CATEGORYAVAILABILITY: String {
+        case kSTANDARD = "standard"
+        case kOPTIONAL = "optional"
+    }
+    
     let kAPIKEY = "7fvw4x2vs5pzcq8qaewbszjt"
     let vehicleSpecs: VehicleSpecs!
     
     init() {
         vehicleSpecs = VehicleSpecs(manager: self)
     }
-    
+  
+    //MARK: SPEC: VEHICLE MAKE
     /**
         Get All Car Makes
         Get a list of all vehicle makes (new, used and future) and their models.
@@ -90,6 +107,7 @@ class EdmundsAPIManager {
         vehicleSpecs.getCarMakesCount(state: state, year: year, view: view, edmundResponse: edmundResponse)
     }
     
+    //MARK: SPEC: VEHICLE MODEL
     /**
         Get Car Model Details by Car Make and Model Nicenames
         Get a vehicle model by its Edmunds Vehicle Make and Model niceNames.
@@ -135,6 +153,7 @@ class EdmundsAPIManager {
         vehicleSpecs.getCarModelsCount(makeNiceName: makeNiceName, state: state, year: year, category: category, view: view, edmundResponse: edmundResponse)
     }
     
+    //MARK: SPEC: VEHICLE MODEL YEAR
     /**
         Get Car Model Year by Car Make and Model Nicenames
         Get a vehicle's model year details by providing its vehicle Make and Model niceNames.
@@ -179,6 +198,7 @@ class EdmundsAPIManager {
         vehicleSpecs.getCarModelYearsCountByVehicleMakeAndModelNicenames(makeNiceName: makeNiceName, modelNiceName: modelNiceName, state: state, view: view, edmundResponse: edmundResponse)
     }
     
+    //MARK: SPEC: VEHICLE STYLE
     /**
         Get Style Details by ID
         Get vehicle style details by Edmunds vehicle style ID.
@@ -269,7 +289,101 @@ class EdmundsAPIManager {
         vehicleSpecs.getStylesDetailsByVehicleChromeID(chromeId: chromeId, view: view, edmundResponse: edmundResponse)
     }
     
+    //MARK: SPEC: VEHICLE COLORS AND OPTIONS
+    /**
+        Get List of Options by Style ID
+        Get list of options and their details for a specific style ID.
+
+        :param: id Edmunds vehicle style ID
+        :param: categoryoptions Option category
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getListOfOptionsByStyleID(#id: String, categoryoptions: CATEGORYOPTIONS, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getListOfOptionsByStyleID(id: id, categoryoptions: categoryoptions, edmundResponse: edmundResponse)
+    }
     
+    /**
+        Get Options Details by ID
+        Get options detail by option ID.
+        
+        :param: id Edmunds option ID
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getOptionsDetailsByID(#id: String, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getOptionsDetailsByID(id: id, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get List of Colors by Style ID
+        Get list of colors and their details for a specific Edmunds style ID.
+        
+        :param: id Edmunds vehicle style ID
+        :param: categoryOptions Option category
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getListOfColorsByStyleID(#id: String, categoryOptions: CATEGORYOPTIONS, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getListOfColorsByStyleID(id: id, categoryOptions: categoryOptions, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get Colors Details by ID
+        Get colors detail by color ID.
+        
+        :param: id Edmunds color ID
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getColorsDetailsByID(#id: String, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getColorsDetailsByID(id: id, edmundResponse: edmundResponse)
+    }
+    
+    //MARK: VEHICLE ENGINE & TRANSMISSION
+    /**
+        Get List of Engines by Style ID
+        Get list of engines and their details for a specific Edmunds style ID.
+        
+        :param: id Edmunds vehicle style ID
+        :param: categoryAvailability Option category
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getListOfEnginesByStyleID(#id: String, categoryAvailability: CATEGORYAVAILABILITY, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getListOfEnginesByStyleID(id: id, categoryAvailability: categoryAvailability, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get Engine Details by ID
+        Get vehicle engine details by engine ID.
+        
+        :param: id The engine ID
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getEngineDetailsByID(#id: String, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getEngineDetailsByID(id: id, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get List of Transmissions by Style ID
+        Get list of transmission and their details for a specific Edmunds style ID.
+        
+        :param: id Edmunds vehicle style ID
+        :param: categoryAvailability Option category
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getListOfTransmissionsByStyleID(#id: String, categoryAvailability: CATEGORYAVAILABILITY, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getListOfTransmissionsByStyleID(id: id, categoryAvailability: categoryAvailability, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get Transmission Details by ID
+        Get list of transmission and their details for a specific Edmunds style ID.
+        
+        :param: id The transmission ID
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getTransmissionDetailsByID(#id: String, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getTransmissionDetailsByID(id: id, edmundResponse: edmundResponse)
+    }
+    
+    //MARK: HELPER METHODS
     /**
         Get JSON data
     

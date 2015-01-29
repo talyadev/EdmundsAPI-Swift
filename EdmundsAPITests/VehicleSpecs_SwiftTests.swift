@@ -22,6 +22,7 @@ class VehicleSpecs_SwiftTests: XCTestCase {
         super.tearDown()
     }
     
+    //MARK: SPEC: VEHICLE MAKE
     func testGetAllCarMakes() {
         let readyExpectation = self.expectationWithDescription("ready")
         manager.getAllCarMakes(state: EdmundsAPIManager.STATE.kNEW, year: "2014", view: EdmundsAPIManager.VIEW.kBASIC) { (dictionary: NSDictionary?, err: NSError?) -> Void in
@@ -55,6 +56,7 @@ class VehicleSpecs_SwiftTests: XCTestCase {
         })
     }
     
+    //MARK: SPEC: VEHICLE MODEL
     func testGetCarModelDetailsByCarMakeAndModelNicenames() {
         let readyExpectation = self.expectationWithDescription("ready")
         manager.getCarModelDetailsByCarMakeAndModelNicenames(makeNiceName: "honda", modelNiceName: "accord", state: EdmundsAPIManager.STATE.kNEW, year: "2014", view: EdmundsAPIManager.VIEW.kBASIC) { (dictionary: NSDictionary?, error: NSError?) -> Void in
@@ -88,6 +90,7 @@ class VehicleSpecs_SwiftTests: XCTestCase {
         })
     }
     
+    //MARK: SPEC: VEHICLE MODEL YEAR
     func testGetCarModelYearByCarMakeAndModelNicenames() {
         let readyExpectation = self.expectationWithDescription("ready")
         manager.getCarModelYearByCarMakeAndModelNicenames(makeNiceName: "honda", modelNiceName: "accord", state: EdmundsAPIManager.STATE.kNEW, category: EdmundsAPIManager.CATEGORY.kCOUPE, view: EdmundsAPIManager.VIEW.kFULL) { (dictionary: NSDictionary?, error: NSError?) -> Void in
@@ -121,6 +124,7 @@ class VehicleSpecs_SwiftTests: XCTestCase {
         })
     }
     
+    //MARK: SPEC: VEHICLE STYLE
     func testGetStyleDetailsByID() {
         let readyExpectation = self.expectationWithDescription("ready")
         manager.getStyleDetailsByID(id: "200487199", view: EdmundsAPIManager.VIEW.kFULL) { (dictionary: NSDictionary?, error: NSError?) -> Void in
@@ -198,4 +202,92 @@ class VehicleSpecs_SwiftTests: XCTestCase {
         })
     }
     
+    //MARK: SPEC: VEHICLE COLORS AND OPTIONS
+    func testGetListOfOptionsByStyleID() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getListOfOptionsByStyleID(id: "200477465", categoryoptions: EdmundsAPIManager.CATEGORYOPTIONS.kEXTERIOR) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
+    
+    func testGetOptionsDetailsByID() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getOptionsDetailsByID(id: "200477465") { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
+    
+    func testGetListOfColorsByStyleID() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getListOfColorsByStyleID(id: "200477465", categoryOptions: EdmundsAPIManager.CATEGORYOPTIONS.kEXTERIOR) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
+    
+    func testGetColorsDetailsByID() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getColorsDetailsByID(id: "200477486") { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
+    
+    func testGetListOfEnginesByStyleID() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getListOfEnginesByStyleID(id: "200477465", categoryAvailability: EdmundsAPIManager.CATEGORYAVAILABILITY.kSTANDARD) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
+    
+    func testGetEngineDetailsByID() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getEngineDetailsByID(id: "200477467") { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
+    
+    func testGetListOfTransmissionsByStyleID() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getListOfTransmissionsByStyleID(id: "200477465", categoryAvailability: EdmundsAPIManager.CATEGORYAVAILABILITY.kSTANDARD) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
+    
+    func testGetTransmissionDetailsByID() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getTransmissionDetailsByID(id: "200477468") { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
 }
