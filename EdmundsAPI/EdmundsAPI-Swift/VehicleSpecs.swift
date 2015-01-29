@@ -370,4 +370,45 @@ class VehicleSpecs {
         })
     }
     
+    //MARK: SPEC: VEHICLE SQUISHVINS
+    func getVehicleDetailsBySquishVIN(#id: String, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+        let URLString = "https://api.edmunds.com/api/vehicle/v2/squishvins/\(id)/?fmt=json&api_key=\(manager.kAPIKEY)"
+        manager.getJSON(URLString, dataResponse: { (data: NSData?, error: NSError?) -> Void in
+            if let err = error {
+                edmundResponse(nil, err)
+            }
+            else {
+                let dictionary = self.manager.parseJSON(data!)
+                edmundResponse(dictionary, nil)
+            }
+        })
+    }
+    
+    //MARK: SPEC: VEHICLE CONFIGURATION
+    func getDefaultConfiguredVehicleByZipcodeAndStyleID(#zip: String, styleid: String, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+        let URLString = "https://api.edmunds.com/v1/api/configurator/default?zip=\(zip)&styleid=\(styleid)&fmt=json&api_key=\(manager.kAPIKEY)"
+        manager.getJSON(URLString, dataResponse: { (data: NSData?, error: NSError?) -> Void in
+            if let err = error {
+                edmundResponse(nil, err)
+            }
+            else {
+                let dictionary = self.manager.parseJSON(data!)
+                edmundResponse(dictionary, nil)
+            }
+        })
+    }
+    
+    func getConfiguredVehicleWithOptions(#zip: String, styleid: String, selected: String, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+        let URLString = "https://api.edmunds.com/v1/api/configurator/withOptions?zip=\(zip)&styleid=\(styleid)&selected=\(selected)&fmt=json&api_key=\(manager.kAPIKEY)"
+        manager.getJSON(URLString, dataResponse: { (data: NSData?, error: NSError?) -> Void in
+            if let err = error {
+                edmundResponse(nil, err)
+            }
+            else {
+                let dictionary = self.manager.parseJSON(data!)
+                edmundResponse(dictionary, nil)
+            }
+        })
+    }
+    
 }

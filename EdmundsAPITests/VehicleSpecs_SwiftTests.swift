@@ -313,4 +313,39 @@ class VehicleSpecs_SwiftTests: XCTestCase {
             XCTAssertNil(error, "error")
         })
     }
+    
+    //MARK: SPEC: VEHICLE SQUISHVINS
+    func testGetVehicleDetailsBySquishVIN() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getVehicleDetailsBySquishVIN(id: "1GTGG29W11") { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
+    
+    //MARK: SPEC: VEHICLE CONFIGURATION
+    func testGetDefaultConfiguredVehicleByZipcodeAndStyleID() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getDefaultConfiguredVehicleByZipcodeAndStyleID(zip: "90019", styleid: "200477465") { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
+    
+    func testGetConfiguredVehicleWithOptions() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getConfiguredVehicleWithOptions(zip: "90019", styleid: "200477465", selected: "200477503") { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
 }

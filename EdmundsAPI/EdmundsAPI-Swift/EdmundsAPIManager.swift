@@ -474,6 +474,44 @@ class EdmundsAPIManager {
         vehicleSpecs.getEquipmentDetailsByID(id: id, edmundResponse: edmundResponse)
     }
     
+    //MARK: VEHICLE SQUISHVINS
+    /**
+        Get Vehicle Details by SquishVIN
+        Get vehicle details for a squishVIN (basically the first 11 digits of the VIN minus the 9th digit which is a check digit).
+        
+        :param: id SquishVIN
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getVehicleDetailsBySquishVIN(#id: String, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getVehicleDetailsBySquishVIN(id: id, edmundResponse: edmundResponse)
+    }
+    
+    //MARK: VEHICLE CONFIGURATION
+    /**
+        Get the default configured vehicle by zipcode and style ID
+        Get vehicle style details by VIN
+        
+        :param: zip Zipcode
+        :param: styleid Vehicle style id
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getDefaultConfiguredVehicleByZipcodeAndStyleID(#zip: String, styleid: String, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getDefaultConfiguredVehicleByZipcodeAndStyleID(zip: zip, styleid: styleid, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get the configured vehicle with options
+        Get vehicle style details by VIN
+        
+        :param: zip Zipcode
+        :param: styleid Vehicle style id
+        :param: selected Vehicle Option ID
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getConfiguredVehicleWithOptions(#zip: String, styleid: String, selected: String, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getConfiguredVehicleWithOptions(zip: zip, styleid: styleid, selected: selected, edmundResponse: edmundResponse)
+    }
+    
     //MARK: HELPER METHODS
     /**
         Get JSON data
