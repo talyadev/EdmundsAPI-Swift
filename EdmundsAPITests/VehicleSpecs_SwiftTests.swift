@@ -24,7 +24,7 @@ class VehicleSpecs_SwiftTests: XCTestCase {
     
     func testGetAllCarMakes() {
         let readyExpectation = self.expectationWithDescription("ready")
-        manager.getAllCarMakes(state: EdmundsAPIManager.STATE.kNEW, year: "2014") { (dictionary: NSDictionary?, err: NSError?) -> Void in
+        manager.getAllCarMakes(state: EdmundsAPIManager.STATE.kNEW, year: "2014", view: EdmundsAPIManager.VIEW.kBASIC) { (dictionary: NSDictionary?, err: NSError?) -> Void in
             XCTAssertNotNil(dictionary, "dictionary is nil")
             readyExpectation.fulfill()
         }
@@ -35,7 +35,7 @@ class VehicleSpecs_SwiftTests: XCTestCase {
     
     func testGetCarMakeDetailsByMakeNicename() {
         let readyExpectation = self.expectationWithDescription("ready")
-        manager.getCarMakeDetailsByMakeNicename(makeNiceName: "Audi", state: EdmundsAPIManager.STATE.kNEW, year: "2014") { (dictionary: NSDictionary?, err: NSError?) -> Void in
+        manager.getCarMakeDetailsByMakeNicename(makeNiceName: "Audi", state: EdmundsAPIManager.STATE.kNEW, year: "2014", view: EdmundsAPIManager.VIEW.kBASIC) { (dictionary: NSDictionary?, err: NSError?) -> Void in
             XCTAssertNotNil(dictionary, "dictionary is nil")
             readyExpectation.fulfill()
         }
@@ -46,7 +46,7 @@ class VehicleSpecs_SwiftTests: XCTestCase {
     
     func testGetCarMakesCount() {
         let readyExpectation = self.expectationWithDescription("ready")
-        manager.getCarMakesCount(state: EdmundsAPIManager.STATE.kNEW, year: "2014") { (dictionary: NSDictionary?, err: NSError?) -> Void in
+        manager.getCarMakesCount(state: EdmundsAPIManager.STATE.kNEW, year: "2014", view: EdmundsAPIManager.VIEW.kBASIC) { (dictionary: NSDictionary?, err: NSError?) -> Void in
             XCTAssertNotNil(dictionary, "dictionary is nil")
             readyExpectation.fulfill()
         }
@@ -57,7 +57,7 @@ class VehicleSpecs_SwiftTests: XCTestCase {
     
     func testGetCarModelDetailsByCarMakeAndModelNicenames() {
         let readyExpectation = self.expectationWithDescription("ready")
-        manager.getCarModelDetailsByCarMakeAndModelNicenames(makeNiceName: "honda", modelNiceName: "accord", state: EdmundsAPIManager.STATE.kNEW, year: "2014") { (dictionary: NSDictionary?, error: NSError?) -> Void in
+        manager.getCarModelDetailsByCarMakeAndModelNicenames(makeNiceName: "honda", modelNiceName: "accord", state: EdmundsAPIManager.STATE.kNEW, year: "2014", view: EdmundsAPIManager.VIEW.kBASIC) { (dictionary: NSDictionary?, error: NSError?) -> Void in
             XCTAssertNotNil(dictionary, "dictionary is nil")
             readyExpectation.fulfill()
         }
@@ -68,7 +68,7 @@ class VehicleSpecs_SwiftTests: XCTestCase {
     
     func testGetAllCarModelsByACarMakeNicename() {
         let readyExpectation = self.expectationWithDescription("ready")
-        manager.getAllCarModelsByACarMakeNicename(makeNiceName: "bmw", state: EdmundsAPIManager.STATE.kNEW, year: "2013", category: EdmundsAPIManager.CATEGORY.kSEDAN) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+        manager.getAllCarModelsByACarMakeNicename(makeNiceName: "bmw", state: EdmundsAPIManager.STATE.kNEW, year: "2013", category: EdmundsAPIManager.CATEGORY.kSEDAN, view: EdmundsAPIManager.VIEW.kBASIC) { (dictionary: NSDictionary?, error: NSError?) -> Void in
             XCTAssertNotNil(dictionary, "dictionary is nil")
             readyExpectation.fulfill()
         }
@@ -79,7 +79,40 @@ class VehicleSpecs_SwiftTests: XCTestCase {
     
     func testGetCarModelsCount() {
         let readyExpectation = self.expectationWithDescription("ready")
-        manager.getCarModelsCount(makeNiceName: "honda", state: EdmundsAPIManager.STATE.kUSED, year: "2011", category: EdmundsAPIManager.CATEGORY.kCOUPE) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+        manager.getCarModelsCount(makeNiceName: "honda", state: EdmundsAPIManager.STATE.kUSED, year: "2011", category: EdmundsAPIManager.CATEGORY.kCOUPE, view: EdmundsAPIManager.VIEW.kBASIC) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
+    
+    func testGetCarModelYearByCarMakeAndModelNicenames() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getCarModelYearByCarMakeAndModelNicenames(makeNiceName: "honda", modelNiceName: "accord", state: EdmundsAPIManager.STATE.kNEW, category: EdmundsAPIManager.CATEGORY.kCOUPE, view: EdmundsAPIManager.VIEW.kFULL) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
+    
+    func testGetCarModelYearByCarMakeAndModelNicenamesAndTheCarYear() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getCarModelYearByCarMakeAndModelNicenamesAndTheCarYear(makeNiceName: "honda", modelNiceName: "civic", year: "2013", category: EdmundsAPIManager.CATEGORY.kSEDAN, view: EdmundsAPIManager.VIEW.kFULL) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
+    
+    func testGetCarModelYearsCountByVehicleMakeAndModelNicenames() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getCarModelYearsCountByVehicleMakeAndModelNicenames(makeNiceName: "audi", modelNiceName: "a6", state: EdmundsAPIManager.STATE.kNEW, view: EdmundsAPIManager.VIEW.kFULL) { (dictionary: NSDictionary?, error: NSError?) -> Void in
             XCTAssertNotNil(dictionary, "dictionary is nil")
             readyExpectation.fulfill()
         }

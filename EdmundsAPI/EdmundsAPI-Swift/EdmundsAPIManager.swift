@@ -19,6 +19,11 @@ class EdmundsAPIManager {
         case kUSED = "used"
     }
     
+    enum VIEW: String {
+        case kBASIC = "basic"
+        case kFULL = "full"
+    }
+    
     enum CATEGORY: String {
         case k4DRHATCHBACK = "4dr+Hatchback"
         case kCOUPE = "Coupe"
@@ -51,10 +56,11 @@ class EdmundsAPIManager {
     
         :param: state The state of the car make
         :param: year The four-digit year of interest
+        :param: view The response payload
         :param: edmundResponse The response from Edmund API on completion
     */
-    func getAllCarMakes(#state: STATE, year: String, edmundResponse: EdmundResponse) -> Void {
-        vehicleSpecs.getAllCarMakes(state: state, year: year, edmundResponse: edmundResponse)
+    func getAllCarMakes(#state: STATE, year: String, view: VIEW, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getAllCarMakes(state: state, year: year, view: view, edmundResponse: edmundResponse)
     }
     
     /**
@@ -64,10 +70,11 @@ class EdmundsAPIManager {
         :param: makeNiceName Car make niceName (you get the niceName from the Get All Car Makes endpoint)
         :param: state The state of the car make
         :param: year The four-digit year of interest
+        :param: view The response payload
         :param: edmundResponse The response from Edmund API on completion
     */
-    func getCarMakeDetailsByMakeNicename(#makeNiceName: String, state: STATE, year: String, edmundResponse: EdmundResponse) -> Void {
-        vehicleSpecs.getCarMakeDetailsByMakeNicename(makeNiceName: makeNiceName, state: state, year: year, edmundResponse: edmundResponse)
+    func getCarMakeDetailsByMakeNicename(#makeNiceName: String, state: STATE, year: String, view: VIEW, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getCarMakeDetailsByMakeNicename(makeNiceName: makeNiceName, state: state, year: year, view: view, edmundResponse: edmundResponse)
     }
     
     /**
@@ -76,10 +83,11 @@ class EdmundsAPIManager {
         
         :param: state The state of the car make
         :param: year The four-digit year of interest
+        :param: view The response payload
         :param: edmundResponse The response from Edmund API on completion
     */
-    func getCarMakesCount(#state: STATE, year: String, edmundResponse: EdmundResponse) -> Void {
-        vehicleSpecs.getCarMakesCount(state: state, year: year, edmundResponse: edmundResponse)
+    func getCarMakesCount(#state: STATE, year: String, view: VIEW, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getCarMakesCount(state: state, year: year, view: view, edmundResponse: edmundResponse)
     }
     
     /**
@@ -90,10 +98,11 @@ class EdmundsAPIManager {
         :param: modelNiceName Car model niceName
         :param: state The state of the car make
         :param: year The four-digit year of interest
+        :param: view The response payload
         :param: edmundResponse The response from Edmund API on completion
     */
-    func getCarModelDetailsByCarMakeAndModelNicenames(#makeNiceName: String, modelNiceName: String, state: STATE, year: String, edmundResponse: EdmundResponse) -> Void {
-        vehicleSpecs.getCarModelDetailsByCarMakeAndModelNicenames(makeNiceName: makeNiceName, modelNiceName: modelNiceName, state: state, year: year, edmundResponse: edmundResponse)
+    func getCarModelDetailsByCarMakeAndModelNicenames(#makeNiceName: String, modelNiceName: String, state: STATE, year: String, view: VIEW, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getCarModelDetailsByCarMakeAndModelNicenames(makeNiceName: makeNiceName, modelNiceName: modelNiceName, state: state, year: year, view: view, edmundResponse: edmundResponse)
     }
     
     /**
@@ -104,10 +113,11 @@ class EdmundsAPIManager {
         :param: state The state of the car make
         :param: year The four-digit year of interest
         :param: category Vehicle category
+        :param: view The response payload
         :param: edmundResponse The response from Edmund API on completion
     */
-    func getAllCarModelsByACarMakeNicename(#makeNiceName: String, state: STATE, year: String, category: CATEGORY, edmundResponse: EdmundResponse) -> Void {
-        vehicleSpecs.getAllCarModelsByACarMakeNicename(makeNiceName: makeNiceName, state: state, year: year, category: category, edmundResponse: edmundResponse)
+    func getAllCarModelsByACarMakeNicename(#makeNiceName: String, state: STATE, year: String, category: CATEGORY, view: VIEW, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getAllCarModelsByACarMakeNicename(makeNiceName: makeNiceName, state: state, year: year, category: category, view: view, edmundResponse: edmundResponse)
     }
     
     /**
@@ -118,10 +128,55 @@ class EdmundsAPIManager {
         :param: state The state of the car make
         :param: year The four-digit year of interest
         :param: category Vehicle category
+        :param: view The response payload
         :param: edmundResponse The response from Edmund API on completion
     */
-    func getCarModelsCount(#makeNiceName: String, state: STATE, year: String, category: CATEGORY, edmundResponse: EdmundResponse) -> Void {
-        vehicleSpecs.getAllCarModelsByACarMakeNicename(makeNiceName: makeNiceName, state: state, year: year, category: category, edmundResponse: edmundResponse)
+    func getCarModelsCount(#makeNiceName: String, state: STATE, year: String, category: CATEGORY, view: VIEW, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getCarModelsCount(makeNiceName: makeNiceName, state: state, year: year, category: category, view: view, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get Car Model Year by Car Make and Model Nicenames
+        Get a vehicle's model year details by providing its vehicle Make and Model niceNames.
+        
+        :param: makeNiceName Car make niceName (you get the niceName from the Get All Car Makes endpoint in the Vehicle Makes resource)
+        :param: modelNiceName Car model niceName
+        :param: state The state of the car make
+        :param: category Vehicle category
+        :param: view The response payload
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getCarModelYearByCarMakeAndModelNicenames(#makeNiceName: String, modelNiceName: String, state: STATE, category: CATEGORY, view: VIEW, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getCarModelYearByCarMakeAndModelNicenames(makeNiceName: makeNiceName, modelNiceName: modelNiceName, state: state,category: category, view: view, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get Car Model Year by Car Make and Model Nicenames and the Car Year
+        Get a list of all Model Years and Styles for a specific vehicle by its Make/Model/Year details.
+        
+        :param: makeNiceName Car make niceName (you get the niceName from the Get All Car Makes endpoint in the Vehicle Makes resource)
+        :param: modelNiceName Car model niceName
+        :param: year The four-digit year of interest
+        :param: category Vehicle category
+        :param: view The response payload
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getCarModelYearByCarMakeAndModelNicenamesAndTheCarYear(#makeNiceName: String, modelNiceName: String, year: String, category: CATEGORY, view: VIEW, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getCarModelYearByCarMakeAndModelNicenamesAndTheCarYear(makeNiceName: makeNiceName, modelNiceName: modelNiceName, year: year, category: category, view: view, edmundResponse: edmundResponse)
+    }
+    
+    /**
+    Get Car Model Years Count by Vehicle Make and Model Nicenames
+    Get the total count of car make years for a specific car make and model.
+    
+    :param: makeNiceName Car make niceName (you get the niceName from the Get All Car Makes endpoint in the Vehicle Makes resource)
+    :param: modelNiceName Car model niceName
+    :param: state The state of the car make
+    :param: view The response payload
+    :param: edmundResponse The response from Edmund API on completion
+    */
+    func getCarModelYearsCountByVehicleMakeAndModelNicenames(#makeNiceName: String, modelNiceName: String, state: STATE, view: VIEW, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getCarModelYearsCountByVehicleMakeAndModelNicenames(makeNiceName: makeNiceName, modelNiceName: modelNiceName, state: state, view: view, edmundResponse: edmundResponse)
     }
     
     /**
