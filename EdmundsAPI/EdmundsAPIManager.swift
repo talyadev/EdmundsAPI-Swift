@@ -3,7 +3,7 @@
 //  EdmundsAPI
 //
 //  Created by Talia DeVault on 1/28/15.
-//  Copyright (c) 2015 Frames Per Sound. All rights reserved.
+//  Copyright (c) 2015 Frames Per Sound. All rights reserved
 //
 
 import Foundation
