@@ -59,6 +59,71 @@ class EdmundsAPIManager {
         case kOPTIONAL = "optional"
     }
     
+    enum CATEGORYEQUIPMENTTYPE: String {
+        case kAUDIOSYSTEM = "AUDIO_SYSTEM"
+        case kCOLOR = "COLOR"
+        case kENGINE = "ENGINE"
+        case kMANUFACTURER = "MANUFACTURER"
+        case kMIRRORS = "MIRRORS"
+        case kOPTION = "OPTION"
+        case kOTHER = "OTHER"
+        case kTELEMATICS = "TELEMATICS"
+        case kTIRES = "TIRES"
+    }
+    
+    enum CATEGORYEQUIPMENTNAME: String {
+        case k1STROWSEATS = "1ST_ROW_SEATS"
+        case k2NDROWSEATS = "2ND_ROW_SEATS"
+        case k3RDROWSEATS = "3RD_ROW_SEATS"
+        case k4THROWSEATS = "4TH_ROW_SEATS"
+        case k5THROWSEATS = "5TH_ROW_SEATS"
+        case kAIRCONDITIONING = "AIR_CONDITIONING"
+        case kAIRBAGS = "AIRBAGS"
+        case kAUDIOSYSTEM = "AUDIO_SYSTEM"
+        case kBRAKESYSTEM = "BRAKE_SYSTEM"
+        case kCARGODIMENSIONS = "CARGO_DIMENSIONS"
+        case kCOLLISIONSAFETYSYSTEM = "COLLISION_SAFETY_SYSTEM"
+        case kCOLOR = "COLOR"
+        case kCONVERTIBLEROOF = "CONVERTIBLE_ROOF"
+        case kDIFFERENTIAL = "DIFFERENTIAL"
+        case kDOORS = "DOORS"
+        case kDRIVETYPE = "DRIVE_TYPE"
+        case kDRIVERSEAT = "DRIVER_SEAT"
+        case kENGINE = "ENGINE"
+        case kEXTERIORDIMENSIONS = "EXTERIOR_DIMENSIONS"
+        case kEXTERIORLIGHTS = "EXTERIOR_LIGHTS"
+        case kFRONTPASSENGERSEAT = "FRONT_PASSENGER_SEAT"
+        case kINSTRUMENTATION = "INSTRUMENTATION"
+        case kINTERIORDIMENSIONS = "INTERIOR_DIMENSIONS"
+        case kMANUFACTURER = "MANUFACTURER"
+        case kMIRRORS = "MIRRORS"
+        case kMOBILECONNECTIVITY = "MOBILE_CONNECTIVITY"
+        case kNAVIGATIONSYSTEM = "NAVIGATION_SYSTEM"
+        case kPARKINGAID = "PARKING_AID"
+        case kPOWEROUTLETS = "POWER_OUTLETS"
+        case kSEATBELTS = "SEATBELTS"
+        case kSEATINGCONFIGURATION = "SEATING_CONFIGURATION"
+        case kSECURITY = "SECURITY"
+        case kSPARETIRE = "SPARE_TIRE%2FWHEEL"
+        case kSPECIFICATIONS = "SPECIFICATIONS"
+        case kSTEERING = "STEERING"
+        case kSTEERINGWHEEL = "STEERING_WHEEL"
+        case kSTORAGE = "STORAGE"
+        case kSUNROOF = "SUNROOF"
+        case kSUSPENSION = "SUSPENSION"
+        case kTECHNOLOGYFEATURE = "TECHNOLOGY_FEATURE"
+        case kTELEMATICS = "TELEMATICS"
+        case kTIRES = "TIRES"
+        case kTRAILERTOWINGEQUIPMENT = "TRAILER_TOWING_EQUIPMENT"
+        case kTRANSMISSION = "TRANSMISSION"
+        case kTRUCKBED = "TRUCK_BED"
+        case kTRUNK = "TRUNK"
+        case kVIDEOSYSTEM = "VIDEO_SYSTEM"
+        case kWARRANTY = "WARRANTY"
+        case kWHEELS = "WHEELS"
+        case kWINDOWS = "WINDOWS"
+    }
+    
     let kAPIKEY = "7fvw4x2vs5pzcq8qaewbszjt"
     let vehicleSpecs: VehicleSpecs!
     
@@ -381,6 +446,32 @@ class EdmundsAPIManager {
     */
     func getTransmissionDetailsByID(#id: String, edmundResponse: EdmundResponse) -> Void {
         vehicleSpecs.getTransmissionDetailsByID(id: id, edmundResponse: edmundResponse)
+    }
+    
+    //MARK: VEHICLE EQUIPMENT
+    /**
+        Get Equipment Details by Style ID
+        Get list of equipment details for a specific style ID.
+        
+        :param: id Edmunds vehicle style ID
+        :param: categoryAvailability Equipment availability
+        :param: equipmentType Equipment category
+        :param: name Equipment category
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getEquipmentDetailsByStyleID(#id: String, categoryAvailability: CATEGORYAVAILABILITY, equipmentType: CATEGORYEQUIPMENTTYPE, name: CATEGORYEQUIPMENTNAME, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getEquipmentDetailsByStyleID(id: id, categoryAvailability: categoryAvailability, equipmentType: equipmentType, name: name, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get Equipment Details by ID
+        Get equipment details by ID.
+        
+        :param: id Edmunds vehicle style ID
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getEquipmentDetailsByID(#id: String, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getEquipmentDetailsByID(id: id, edmundResponse: edmundResponse)
     }
     
     //MARK: HELPER METHODS

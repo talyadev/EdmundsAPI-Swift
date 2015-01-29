@@ -290,4 +290,27 @@ class VehicleSpecs_SwiftTests: XCTestCase {
             XCTAssertNil(error, "error")
         })
     }
+    
+    //MARK: SPEC: VEHICLE EQUIPMENT
+    func testGetEquipmentDetailsByStyleID() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getEquipmentDetailsByStyleID(id: "200477465", categoryAvailability: EdmundsAPIManager.CATEGORYAVAILABILITY.kSTANDARD, equipmentType: EdmundsAPIManager.CATEGORYEQUIPMENTTYPE.kOTHER, name: EdmundsAPIManager.CATEGORYEQUIPMENTNAME.k1STROWSEATS) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
+    
+    func testGetEquipmentDetailsByID() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getEquipmentDetailsByID(id: "200477520") { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
 }
