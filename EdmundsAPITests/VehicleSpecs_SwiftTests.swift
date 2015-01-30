@@ -348,4 +348,27 @@ class VehicleSpecs_SwiftTests: XCTestCase {
             XCTAssertNil(error, "error")
         })
     }
+    
+    //MARK: SPEC: VIN DECODING
+    func testGetBasicVehicleInformationByVIN() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getBasicVehicleInformationByVIN(vin: "2G1FC3D33C9165616") { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
+    
+    func testGetFullVehicleDetailsByVIN() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.getBasicVehicleInformationByVIN(vin: "2G1FC3D33C9165616") { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
 }

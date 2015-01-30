@@ -411,4 +411,31 @@ class VehicleSpecs {
         })
     }
     
+    //MARK: SPEC: VIN DECODING
+    func getBasicVehicleInformationByVIN(#vin: String, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+        let URLString = "https://api.edmunds.com/api/v1/vehicle/vin/\(vin)/configuration?api_key=\(manager.kAPIKEY)"
+        manager.getJSON(URLString, dataResponse: { (data: NSData?, error: NSError?) -> Void in
+            if let err = error {
+                edmundResponse(nil, err)
+            }
+            else {
+                let dictionary = self.manager.parseJSON(data!)
+                edmundResponse(dictionary, nil)
+            }
+        })
+    }
+    
+    func getFullVehicleDetailsByVIN(#vin: String, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+        let URLString = "https://api.edmunds.com/api/vehicle/v2/vins/\(vin)?fmt=json&api_key=\(manager.kAPIKEY)"
+        manager.getJSON(URLString, dataResponse: { (data: NSData?, error: NSError?) -> Void in
+            if let err = error {
+                edmundResponse(nil, err)
+            }
+            else {
+                let dictionary = self.manager.parseJSON(data!)
+                edmundResponse(dictionary, nil)
+            }
+        })
+    }
+    
 }

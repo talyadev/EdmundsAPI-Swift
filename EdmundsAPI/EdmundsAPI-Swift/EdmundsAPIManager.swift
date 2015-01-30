@@ -401,7 +401,7 @@ class EdmundsAPIManager {
         vehicleSpecs.getColorsDetailsByID(id: id, edmundResponse: edmundResponse)
     }
     
-    //MARK: VEHICLE ENGINE & TRANSMISSION
+    //MARK: SPEC: VEHICLE ENGINE & TRANSMISSION
     /**
         Get List of Engines by Style ID
         Get list of engines and their details for a specific Edmunds style ID.
@@ -448,7 +448,7 @@ class EdmundsAPIManager {
         vehicleSpecs.getTransmissionDetailsByID(id: id, edmundResponse: edmundResponse)
     }
     
-    //MARK: VEHICLE EQUIPMENT
+    //MARK: SPEC: VEHICLE EQUIPMENT
     /**
         Get Equipment Details by Style ID
         Get list of equipment details for a specific style ID.
@@ -474,7 +474,7 @@ class EdmundsAPIManager {
         vehicleSpecs.getEquipmentDetailsByID(id: id, edmundResponse: edmundResponse)
     }
     
-    //MARK: VEHICLE SQUISHVINS
+    //MARK: SPEC: VEHICLE SQUISHVINS
     /**
         Get Vehicle Details by SquishVIN
         Get vehicle details for a squishVIN (basically the first 11 digits of the VIN minus the 9th digit which is a check digit).
@@ -486,7 +486,7 @@ class EdmundsAPIManager {
         vehicleSpecs.getVehicleDetailsBySquishVIN(id: id, edmundResponse: edmundResponse)
     }
     
-    //MARK: VEHICLE CONFIGURATION
+    //MARK: SPEC: VEHICLE CONFIGURATION
     /**
         Get the default configured vehicle by zipcode and style ID
         Get vehicle style details by VIN
@@ -510,6 +510,29 @@ class EdmundsAPIManager {
     */
     func getConfiguredVehicleWithOptions(#zip: String, styleid: String, selected: String, edmundResponse: EdmundResponse) -> Void {
         vehicleSpecs.getConfiguredVehicleWithOptions(zip: zip, styleid: styleid, selected: selected, edmundResponse: edmundResponse)
+    }
+    
+    //MARK: SPEC: VIN DECODING
+    /**
+        Get Basic Vehicle Information by VIN (NEW CARS ONLY)
+        Get vehicle make, model, year, type, fuel type, number of cylinders and list of styles by decoding the vehicle's VIN. Limited to: Non-Commercial vehicles for sale in the USA, built after 1990
+        
+        :param: vin NEW Vehicle VIN
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getBasicVehicleInformationByVIN(#vin: String, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getBasicVehicleInformationByVIN(vin: vin, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get Full Vehicle Details by VIN
+        Get all vehicle details from make, model, year and fuel type to list of options, features and standard equipment. All this information is returned by decoding the vehicle's VIN. Limited to: Non-Commercial vehicles for sale in the USA, built after 1990
+        
+        :param: vin Vehicle VIN
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getFullVehicleDetailsByVIN(#vin: String, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getFullVehicleDetailsByVIN(vin: vin, edmundResponse: edmundResponse)
     }
     
     //MARK: HELPER METHODS
