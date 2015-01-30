@@ -12,11 +12,17 @@
 		839229371A79BA6E001E098F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 839229351A79BA6E001E098F /* Main.storyboard */; };
 		839229391A79BA6E001E098F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 839229381A79BA6E001E098F /* Images.xcassets */; };
 		8392293C1A79BA6E001E098F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8392293A1A79BA6E001E098F /* LaunchScreen.xib */; };
-		839229591A79BAAB001E098F /* VehicleSpecs_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839229571A79BAAB001E098F /* VehicleSpecs_SwiftTests.swift */; };
 		839229631A79BF1F001E098F /* EdmundsAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839229611A79BF1F001E098F /* EdmundsAPIManager.swift */; };
 		839229641A79BF1F001E098F /* EdmundsAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839229611A79BF1F001E098F /* EdmundsAPIManager.swift */; };
 		839229651A79BF1F001E098F /* VehicleSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839229621A79BF1F001E098F /* VehicleSpecs.swift */; };
 		839229661A79BF1F001E098F /* VehicleSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839229621A79BF1F001E098F /* VehicleSpecs.swift */; };
+		83BD95AA1A7BD9CE0074AECB /* VehicleMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BD95A91A7BD9CE0074AECB /* VehicleMedia.swift */; };
+		83BD95AB1A7BD9CE0074AECB /* VehicleMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BD95A91A7BD9CE0074AECB /* VehicleMedia.swift */; };
+		83BD95AE1A7BDB640074AECB /* VehicleMedia_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BD95AC1A7BDB640074AECB /* VehicleMedia_SwiftTests.swift */; };
+		83BD95B01A7BDF490074AECB /* VehiclePricing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BD95AF1A7BDF490074AECB /* VehiclePricing.swift */; };
+		83BD95B11A7BDF490074AECB /* VehiclePricing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BD95AF1A7BDF490074AECB /* VehiclePricing.swift */; };
+		83BD95B31A7BE0C60074AECB /* VehiclePricing_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BD95B21A7BE0C60074AECB /* VehiclePricing_SwiftTests.swift */; };
+		83BD95B41A7BEBBF0074AECB /* VehicleSpecs_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839229571A79BAAB001E098F /* VehicleSpecs_SwiftTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +48,10 @@
 		839229571A79BAAB001E098F /* VehicleSpecs_SwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleSpecs_SwiftTests.swift; sourceTree = "<group>"; };
 		839229611A79BF1F001E098F /* EdmundsAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdmundsAPIManager.swift; sourceTree = "<group>"; };
 		839229621A79BF1F001E098F /* VehicleSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleSpecs.swift; sourceTree = "<group>"; };
+		83BD95A91A7BD9CE0074AECB /* VehicleMedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleMedia.swift; sourceTree = "<group>"; };
+		83BD95AC1A7BDB640074AECB /* VehicleMedia_SwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleMedia_SwiftTests.swift; sourceTree = "<group>"; };
+		83BD95AF1A7BDF490074AECB /* VehiclePricing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehiclePricing.swift; sourceTree = "<group>"; };
+		83BD95B21A7BE0C60074AECB /* VehiclePricing_SwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehiclePricing_SwiftTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +116,8 @@
 			isa = PBXGroup;
 			children = (
 				839229571A79BAAB001E098F /* VehicleSpecs_SwiftTests.swift */,
+				83BD95AC1A7BDB640074AECB /* VehicleMedia_SwiftTests.swift */,
+				83BD95B21A7BE0C60074AECB /* VehiclePricing_SwiftTests.swift */,
 				839229451A79BA6E001E098F /* Supporting Files */,
 			);
 			path = EdmundsAPITests;
@@ -124,6 +136,8 @@
 			children = (
 				839229611A79BF1F001E098F /* EdmundsAPIManager.swift */,
 				839229621A79BF1F001E098F /* VehicleSpecs.swift */,
+				83BD95A91A7BD9CE0074AECB /* VehicleMedia.swift */,
+				83BD95AF1A7BDF490074AECB /* VehiclePricing.swift */,
 			);
 			path = "EdmundsAPI-Swift";
 			sourceTree = "<group>";
@@ -230,8 +244,10 @@
 			files = (
 				839229631A79BF1F001E098F /* EdmundsAPIManager.swift in Sources */,
 				839229341A79BA6E001E098F /* ViewController.swift in Sources */,
+				83BD95AA1A7BD9CE0074AECB /* VehicleMedia.swift in Sources */,
 				839229321A79BA6E001E098F /* AppDelegate.swift in Sources */,
 				839229651A79BF1F001E098F /* VehicleSpecs.swift in Sources */,
+				83BD95B01A7BDF490074AECB /* VehiclePricing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,9 +255,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				839229591A79BAAB001E098F /* VehicleSpecs_SwiftTests.swift in Sources */,
+				83BD95B31A7BE0C60074AECB /* VehiclePricing_SwiftTests.swift in Sources */,
+				83BD95B41A7BEBBF0074AECB /* VehicleSpecs_SwiftTests.swift in Sources */,
+				83BD95AB1A7BD9CE0074AECB /* VehicleMedia.swift in Sources */,
 				839229661A79BF1F001E098F /* VehicleSpecs.swift in Sources */,
+				83BD95AE1A7BDB640074AECB /* VehicleMedia_SwiftTests.swift in Sources */,
 				839229641A79BF1F001E098F /* EdmundsAPIManager.swift in Sources */,
+				83BD95B11A7BDF490074AECB /* VehiclePricing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +447,7 @@
 				8392294D1A79BA6E001E098F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8392294E1A79BA6E001E098F /* Build configuration list for PBXNativeTarget "EdmundsAPITests" */ = {
 			isa = XCConfigurationList;
@@ -435,6 +456,7 @@
 				839229501A79BA6E001E098F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

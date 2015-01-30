@@ -10,125 +10,20 @@ import Foundation
 
 class EdmundsAPIManager {
     
-    typealias EdmundResponse = (NSDictionary?, NSError?) -> Void
-    typealias DataResponse = (NSData?, NSError?) -> Void
-    
-    enum STATE: String {
-        case kNEW = "new"
-        case kFUTURE = "future"
-        case kUSED = "used"
-    }
-    
-    enum VIEW: String {
-        case kBASIC = "basic"
-        case kFULL = "full"
-    }
-    
-    enum CATEGORY: String {
-        case k4DRHATCHBACK = "4dr+Hatchback"
-        case kCOUPE = "Coupe"
-        case kCONVERTIBLE = "Convertible"
-        case kSEDAN = "Sedan"
-        case k2DRHATCHBACK = "2dr+Hatchback"
-        case kWAGON = "Wagon"
-        case kREGULARCABPICKUP = "Regular+Cab+Pickup"
-        case kEXTENDEDCABPICKUP = "Extended+Cab+Pickup"
-        case kCREWCABPICKUP = "Crew+Cab+Pickup"
-        case k2DRSUV = "2dr+SUV"
-        case k4DRSUV = "4dr+SUV"
-        case kCONVERTIBLESUV = "Convertible+SUV"
-        case kCARGOVAN = "Cargo+Van"
-        case kPASSENGERVAN = "Passenger+Van"
-        case kCARGOMINIVAN = "Cargo+Minivan"
-        case kPASSENGERMINIVAN = "Passenger+Minivan"
-    }
-    
-    enum CATEGORYOPTIONS: String {
-        case kINTERIOR = "Interior"
-        case kEXTERIOR = "Exterior"
-        case kROOF = "Roof"
-        case kINTERIORTRIM = "Interior+Trim"
-        case kMECHANICAL = "Mechanical"
-        case kPACKAGE = "Package"
-        case kADDITIONALFEES = "Additional+Fees"
-        case kOTHER = "Other"
-    }
-    
-    enum CATEGORYAVAILABILITY: String {
-        case kSTANDARD = "standard"
-        case kOPTIONAL = "optional"
-    }
-    
-    enum CATEGORYEQUIPMENTTYPE: String {
-        case kAUDIOSYSTEM = "AUDIO_SYSTEM"
-        case kCOLOR = "COLOR"
-        case kENGINE = "ENGINE"
-        case kMANUFACTURER = "MANUFACTURER"
-        case kMIRRORS = "MIRRORS"
-        case kOPTION = "OPTION"
-        case kOTHER = "OTHER"
-        case kTELEMATICS = "TELEMATICS"
-        case kTIRES = "TIRES"
-    }
-    
-    enum CATEGORYEQUIPMENTNAME: String {
-        case k1STROWSEATS = "1ST_ROW_SEATS"
-        case k2NDROWSEATS = "2ND_ROW_SEATS"
-        case k3RDROWSEATS = "3RD_ROW_SEATS"
-        case k4THROWSEATS = "4TH_ROW_SEATS"
-        case k5THROWSEATS = "5TH_ROW_SEATS"
-        case kAIRCONDITIONING = "AIR_CONDITIONING"
-        case kAIRBAGS = "AIRBAGS"
-        case kAUDIOSYSTEM = "AUDIO_SYSTEM"
-        case kBRAKESYSTEM = "BRAKE_SYSTEM"
-        case kCARGODIMENSIONS = "CARGO_DIMENSIONS"
-        case kCOLLISIONSAFETYSYSTEM = "COLLISION_SAFETY_SYSTEM"
-        case kCOLOR = "COLOR"
-        case kCONVERTIBLEROOF = "CONVERTIBLE_ROOF"
-        case kDIFFERENTIAL = "DIFFERENTIAL"
-        case kDOORS = "DOORS"
-        case kDRIVETYPE = "DRIVE_TYPE"
-        case kDRIVERSEAT = "DRIVER_SEAT"
-        case kENGINE = "ENGINE"
-        case kEXTERIORDIMENSIONS = "EXTERIOR_DIMENSIONS"
-        case kEXTERIORLIGHTS = "EXTERIOR_LIGHTS"
-        case kFRONTPASSENGERSEAT = "FRONT_PASSENGER_SEAT"
-        case kINSTRUMENTATION = "INSTRUMENTATION"
-        case kINTERIORDIMENSIONS = "INTERIOR_DIMENSIONS"
-        case kMANUFACTURER = "MANUFACTURER"
-        case kMIRRORS = "MIRRORS"
-        case kMOBILECONNECTIVITY = "MOBILE_CONNECTIVITY"
-        case kNAVIGATIONSYSTEM = "NAVIGATION_SYSTEM"
-        case kPARKINGAID = "PARKING_AID"
-        case kPOWEROUTLETS = "POWER_OUTLETS"
-        case kSEATBELTS = "SEATBELTS"
-        case kSEATINGCONFIGURATION = "SEATING_CONFIGURATION"
-        case kSECURITY = "SECURITY"
-        case kSPARETIRE = "SPARE_TIRE%2FWHEEL"
-        case kSPECIFICATIONS = "SPECIFICATIONS"
-        case kSTEERING = "STEERING"
-        case kSTEERINGWHEEL = "STEERING_WHEEL"
-        case kSTORAGE = "STORAGE"
-        case kSUNROOF = "SUNROOF"
-        case kSUSPENSION = "SUSPENSION"
-        case kTECHNOLOGYFEATURE = "TECHNOLOGY_FEATURE"
-        case kTELEMATICS = "TELEMATICS"
-        case kTIRES = "TIRES"
-        case kTRAILERTOWINGEQUIPMENT = "TRAILER_TOWING_EQUIPMENT"
-        case kTRANSMISSION = "TRANSMISSION"
-        case kTRUCKBED = "TRUCK_BED"
-        case kTRUNK = "TRUNK"
-        case kVIDEOSYSTEM = "VIDEO_SYSTEM"
-        case kWARRANTY = "WARRANTY"
-        case kWHEELS = "WHEELS"
-        case kWINDOWS = "WINDOWS"
-    }
-    
+    //Edumnds API Key
     let kAPIKEY = "7fvw4x2vs5pzcq8qaewbszjt"
+    
+    typealias EdmundResponse = (NSDictionary?, NSError?) -> Void
+    typealias EdmundResponseMedia = (NSArray?, NSError?) -> Void
+    typealias DataResponse = (NSData?, NSError?) -> Void
     let vehicleSpecs: VehicleSpecs!
+    let vehicleMedia: VehicleMedia!
+    let vehiclePricing: VehiclePricing!
     
     init() {
         vehicleSpecs = VehicleSpecs(manager: self)
+        vehicleMedia = VehicleMedia(manager: self)
+        vehiclePricing = VehiclePricing(manager: self)
     }
   
     //MARK: SPEC: VEHICLE MAKE
@@ -535,6 +430,128 @@ class EdmundsAPIManager {
         vehicleSpecs.getFullVehicleDetailsByVIN(vin: vin, edmundResponse: edmundResponse)
     }
     
+    //MARK: MEDIA: VEHICLE PHOTO
+    /**
+        Get by Vehicle Style ID
+        Get vehicle photos by Edmunds vehicle style ID.
+        
+        :param: styleId Edmunds vehicle style ID
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getVehiclePhotoByVehicleStyleID(#styleId: String, edmundResponse: EdmundResponseMedia) -> Void {
+        vehicleMedia.getVehiclePhotoByVehicleStyleID(styleId: styleId, edmundResponse: edmundResponse)
+    }
+    
+    //MARK: PRICING: TRUE COST TO OWN (TCO)
+    /**
+        Calculate for New Vehicles
+        Get the total 5-year True Cost to Own for a new vehicle.
+        
+        :param: styleId Edmunds vehicle style ID
+        :param: zip Five-digit zipcode
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func calculateForNewVehicles(#styleId: String, zip: String, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.calculateForNewVehicles(styleId: styleId, zip: zip, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Calculate for Used Vehicles
+        Get the total 5-year True Cost to Own for a used vehicle.
+        
+        :param: styleId Edmunds vehicle style ID
+        :param: zip Five-digit zipcode
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func calculateForUsedVehicles(#styleId: String, zip: String, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.calculateForNewVehicles(styleId: styleId, zip: zip, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Calculate Total Cash Price for New Vehicle
+        The Total Cash Price displayed is the vehicle's True Market Value® price plus the Typically Equipped options, destination charge, base tax and fees assessed by your state, and, if applicable, gas guzzler tax; less any widely available manufacturer-to-customer cash rebates. (However, we do not account for other types of cash rebates or incentives because of the variability of those offers and their eligibility requirements.)
+        
+        :param: styleId Edmunds vehicle style ID
+        :param: zip Five-digit zipcode
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func calculateTotalCashPriceForNewVehicle(#styleId: String, zip: String, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.calculateTotalCashPriceForNewVehicle(styleId: styleId, zip: zip, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Calculate Total Cash Price for Used Vehicle
+        The Total Cash Price displayed is the vehicle's True Market Value® price plus the Typically Equipped options, destination charge, base tax and fees assessed by your state, and, if applicable, gas guzzler tax; less any widely available manufacturer-to-customer cash rebates. (However, we do not account for other types of cash rebates or incentives because of the variability of those offers and their eligibility requirements.)
+        
+        :param: styleId Edmunds vehicle style ID
+        :param: zip Five-digit zipcode
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func calculateTotalCashPriceForUsedVehicle(#styleId: String, zip: String, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.calculateTotalCashPriceForUsedVehicle(styleId: styleId, zip: zip, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get Vehicle Makes with TCO Data
+        Get a list of vehicle makes with availabe True Cost to Own data.
+        
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getVehicleMakesWithTCOData(#edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.getVehicleMakesWithTCOData(edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get Vehicle Models with TCO Data
+        Get a list of vehicle models with availabe True Cost to Own data.
+        
+        :param: makeId The Car Make ID
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getVehicleModelsWithTCOData(#makeId: String, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.getVehicleModelsWithTCOData(makeId: makeId, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get Vehicle Styles with TCO Data
+        Get a list of vehicle styles with available True Cost to Own data.
+        
+        :param: make Vehicle make niceName
+        :param: model Vehicle model niceName
+        :param: year Vehicle year (YYYY)
+        :param: submodel Vehicle submodel
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getVehicleStylesWithTCOData(#make: String, model: String, year: String, submodel: CATEGORY, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.getVehicleStylesWithTCOData(make: make, model: model, year: year, submodel: submodel, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get TCO details for a New Car
+        Get the 5-year breakdown values of all TCO categories for a New vehicle based on its specified style Id, zip code, and state code.
+        
+        :param: styleId Vehicle style ID
+        :param: zip Five-digit zipcode
+        :param: state US State Code (e.g. CA, NY, NJ, PA, ...etc)
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getTCODetailsForANewCar(#styleId: String, zip: String, state: String, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.getTCODetailsForANewCar(styleId: styleId, zip: zip, state: state, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get TCO details for a Used Car
+        Get the 5-year breakdown values of all TCO categories for a Used vehicle based on its specified style Id, zip code, and state code.
+        
+        :param: styleId Vehicle style ID
+        :param: zip Five-digit zipcode
+        :param: state US State Code (e.g. CA, NY, NJ, PA, ...etc)
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getTCODetailsForAUsedCar(#styleId: String, zip: String, state: String, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.getTCODetailsForAUsedCar(styleId: styleId, zip: zip, state: state, edmundResponse: edmundResponse)
+    }
+    
     //MARK: HELPER METHODS
     /**
         Get JSON data
@@ -556,6 +573,16 @@ class EdmundsAPIManager {
         }
     }
     
+    func getResult(#data: NSData?, error: NSError?, edmundResponse: EdmundResponse) {
+        if let err = error {
+            edmundResponse(nil, err)
+        }
+        else {
+            let dictionary = parseJSON(data!)
+            edmundResponse(dictionary, nil)
+        }
+    }
+    
     /**
         Parse JSON data
     
@@ -566,5 +593,129 @@ class EdmundsAPIManager {
         //var err: NSError
         let dictionary: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
         return dictionary
+    }
+    
+    /**
+        Parse JSON data
+        
+        :param: data The NSData to be parsed
+        :return: array The JSON array
+    */
+    func parseJSONArray(data: NSData) -> NSArray {
+        //var err: NSError
+        let array: NSArray = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSArray
+        return array
+    }
+    
+    //MARK: ENUMS
+    enum STATE: String {
+        case kNEW = "new"
+        case kFUTURE = "future"
+        case kUSED = "used"
+    }
+    
+    enum VIEW: String {
+        case kBASIC = "basic"
+        case kFULL = "full"
+    }
+    
+    enum CATEGORY: String {
+        case k4DRHATCHBACK = "4dr+Hatchback"
+        case kCOUPE = "Coupe"
+        case kCONVERTIBLE = "Convertible"
+        case kSEDAN = "Sedan"
+        case k2DRHATCHBACK = "2dr+Hatchback"
+        case kWAGON = "Wagon"
+        case kREGULARCABPICKUP = "Regular+Cab+Pickup"
+        case kEXTENDEDCABPICKUP = "Extended+Cab+Pickup"
+        case kCREWCABPICKUP = "Crew+Cab+Pickup"
+        case k2DRSUV = "2dr+SUV"
+        case k4DRSUV = "4dr+SUV"
+        case kCONVERTIBLESUV = "Convertible+SUV"
+        case kCARGOVAN = "Cargo+Van"
+        case kPASSENGERVAN = "Passenger+Van"
+        case kCARGOMINIVAN = "Cargo+Minivan"
+        case kPASSENGERMINIVAN = "Passenger+Minivan"
+    }
+    
+    enum CATEGORYOPTIONS: String {
+        case kINTERIOR = "Interior"
+        case kEXTERIOR = "Exterior"
+        case kROOF = "Roof"
+        case kINTERIORTRIM = "Interior+Trim"
+        case kMECHANICAL = "Mechanical"
+        case kPACKAGE = "Package"
+        case kADDITIONALFEES = "Additional+Fees"
+        case kOTHER = "Other"
+    }
+    
+    enum CATEGORYAVAILABILITY: String {
+        case kSTANDARD = "standard"
+        case kOPTIONAL = "optional"
+    }
+    
+    enum CATEGORYEQUIPMENTTYPE: String {
+        case kAUDIOSYSTEM = "AUDIO_SYSTEM"
+        case kCOLOR = "COLOR"
+        case kENGINE = "ENGINE"
+        case kMANUFACTURER = "MANUFACTURER"
+        case kMIRRORS = "MIRRORS"
+        case kOPTION = "OPTION"
+        case kOTHER = "OTHER"
+        case kTELEMATICS = "TELEMATICS"
+        case kTIRES = "TIRES"
+    }
+    
+    enum CATEGORYEQUIPMENTNAME: String {
+        case k1STROWSEATS = "1ST_ROW_SEATS"
+        case k2NDROWSEATS = "2ND_ROW_SEATS"
+        case k3RDROWSEATS = "3RD_ROW_SEATS"
+        case k4THROWSEATS = "4TH_ROW_SEATS"
+        case k5THROWSEATS = "5TH_ROW_SEATS"
+        case kAIRCONDITIONING = "AIR_CONDITIONING"
+        case kAIRBAGS = "AIRBAGS"
+        case kAUDIOSYSTEM = "AUDIO_SYSTEM"
+        case kBRAKESYSTEM = "BRAKE_SYSTEM"
+        case kCARGODIMENSIONS = "CARGO_DIMENSIONS"
+        case kCOLLISIONSAFETYSYSTEM = "COLLISION_SAFETY_SYSTEM"
+        case kCOLOR = "COLOR"
+        case kCONVERTIBLEROOF = "CONVERTIBLE_ROOF"
+        case kDIFFERENTIAL = "DIFFERENTIAL"
+        case kDOORS = "DOORS"
+        case kDRIVETYPE = "DRIVE_TYPE"
+        case kDRIVERSEAT = "DRIVER_SEAT"
+        case kENGINE = "ENGINE"
+        case kEXTERIORDIMENSIONS = "EXTERIOR_DIMENSIONS"
+        case kEXTERIORLIGHTS = "EXTERIOR_LIGHTS"
+        case kFRONTPASSENGERSEAT = "FRONT_PASSENGER_SEAT"
+        case kINSTRUMENTATION = "INSTRUMENTATION"
+        case kINTERIORDIMENSIONS = "INTERIOR_DIMENSIONS"
+        case kMANUFACTURER = "MANUFACTURER"
+        case kMIRRORS = "MIRRORS"
+        case kMOBILECONNECTIVITY = "MOBILE_CONNECTIVITY"
+        case kNAVIGATIONSYSTEM = "NAVIGATION_SYSTEM"
+        case kPARKINGAID = "PARKING_AID"
+        case kPOWEROUTLETS = "POWER_OUTLETS"
+        case kSEATBELTS = "SEATBELTS"
+        case kSEATINGCONFIGURATION = "SEATING_CONFIGURATION"
+        case kSECURITY = "SECURITY"
+        case kSPARETIRE = "SPARE_TIRE%2FWHEEL"
+        case kSPECIFICATIONS = "SPECIFICATIONS"
+        case kSTEERING = "STEERING"
+        case kSTEERINGWHEEL = "STEERING_WHEEL"
+        case kSTORAGE = "STORAGE"
+        case kSUNROOF = "SUNROOF"
+        case kSUSPENSION = "SUSPENSION"
+        case kTECHNOLOGYFEATURE = "TECHNOLOGY_FEATURE"
+        case kTELEMATICS = "TELEMATICS"
+        case kTIRES = "TIRES"
+        case kTRAILERTOWINGEQUIPMENT = "TRAILER_TOWING_EQUIPMENT"
+        case kTRANSMISSION = "TRANSMISSION"
+        case kTRUCKBED = "TRUCK_BED"
+        case kTRUNK = "TRUNK"
+        case kVIDEOSYSTEM = "VIDEO_SYSTEM"
+        case kWARRANTY = "WARRANTY"
+        case kWHEELS = "WHEELS"
+        case kWINDOWS = "WINDOWS"
     }
 }
