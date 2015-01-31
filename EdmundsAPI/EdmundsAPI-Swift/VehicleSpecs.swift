@@ -252,7 +252,7 @@ class VehicleSpecs {
     }
     
     //MARK: SPEC: VEHICLE COLORS AND OPTIONS
-    func getListOfOptionsByStyleID(#id: String, category: EdmundsAPIManager.CATEGORYOPTIONS?, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+    func getListOfOptionsByStyleID(#id: String, category: EdmundsAPIManager.OPTIONS?, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
         var URLString = "https://api.edmunds.com/api/vehicle/v2/styles/\(id)/options?"
         if category != nil {
             URLString += "category=\(category!.rawValue)"
@@ -270,7 +270,7 @@ class VehicleSpecs {
         })
     }
     
-    func getListOfColorsByStyleID(#id: String, category: EdmundsAPIManager.CATEGORYOPTIONS?, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+    func getListOfColorsByStyleID(#id: String, category: EdmundsAPIManager.OPTIONS?, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
         var URLString = "https://api.edmunds.com/api/vehicle/v2/styles/\(id)/colors?"
         if category != nil {
             URLString += "category=\(category!.rawValue)"
@@ -289,7 +289,7 @@ class VehicleSpecs {
     }
     
     //MARK: SPEC: VEHICLE ENGINE & TRANSMISSION
-    func getListOfEnginesByStyleID(#id: String, availability: EdmundsAPIManager.CATEGORYAVAILABILITY?, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+    func getListOfEnginesByStyleID(#id: String, availability: EdmundsAPIManager.AVAILABILITY?, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
         var URLString = "https://api.edmunds.com/api/vehicle/v2/styles/\(id)/engines?"
         if availability != nil {
             URLString += "availability=\(availability!.rawValue)"
@@ -307,7 +307,7 @@ class VehicleSpecs {
         })
     }
 
-    func getListOfTransmissionsByStyleID(#id: String, availability: EdmundsAPIManager.CATEGORYAVAILABILITY?, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+    func getListOfTransmissionsByStyleID(#id: String, availability: EdmundsAPIManager.AVAILABILITY?, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
         var URLString = "https://api.edmunds.com/api/vehicle/v2/styles/\(id)/transmissions?"
         if availability != nil {
             URLString += "availability=\(availability!.rawValue)"
@@ -326,8 +326,8 @@ class VehicleSpecs {
     }
     
     //MARK: SPEC: VEHICLE EQUIPMENT
-    func getEquipmentDetailsByStyleID(#id: String, categoryAvailability: EdmundsAPIManager.CATEGORYAVAILABILITY, equipmentType: EdmundsAPIManager.CATEGORYEQUIPMENTTYPE, name: EdmundsAPIManager.CATEGORYEQUIPMENTNAME?, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
-        var URLString = "https://api.edmunds.com/api/vehicle/v2/styles/\(id)/equipment?availability=\(categoryAvailability.rawValue)&equipmentType=\(equipmentType.rawValue)"
+    func getEquipmentDetailsByStyleID(#id: String, availability: EdmundsAPIManager.AVAILABILITY, equipmentType: EdmundsAPIManager.EQUIPMENTTYPE, name: EdmundsAPIManager.EQUIPMENTNAME?, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+        var URLString = "https://api.edmunds.com/api/vehicle/v2/styles/\(id)/equipment?availability=\(availability.rawValue)&equipmentType=\(equipmentType.rawValue)"
         if name != nil {
             URLString += "&name=\(name!.rawValue)"
         }

@@ -26,6 +26,9 @@
 		83C861B31A7D3C8700D1ED16 /* VehicleContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C861B21A7D3C8700D1ED16 /* VehicleContent.swift */; };
 		83C861B41A7D3C8700D1ED16 /* VehicleContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C861B21A7D3C8700D1ED16 /* VehicleContent.swift */; };
 		83C861B71A7D3E8900D1ED16 /* VehicleContent_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C861B51A7D3E7C00D1ED16 /* VehicleContent_SwiftTests.swift */; };
+		83C861BC1A7D46DB00D1ED16 /* VehicleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C861BB1A7D46DB00D1ED16 /* VehicleService.swift */; };
+		83C861BD1A7D46DB00D1ED16 /* VehicleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C861BB1A7D46DB00D1ED16 /* VehicleService.swift */; };
+		83C861C11A7D477F00D1ED16 /* VehicleService_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C861C01A7D477F00D1ED16 /* VehicleService_SwiftTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,14 +52,16 @@
 		839229411A79BA6E001E098F /* EdmundsAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EdmundsAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		839229461A79BA6E001E098F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		839229571A79BAAB001E098F /* VehicleSpecs_SwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleSpecs_SwiftTests.swift; sourceTree = "<group>"; };
-		839229611A79BF1F001E098F /* EdmundsAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdmundsAPIManager.swift; sourceTree = "<group>"; };
+		839229611A79BF1F001E098F /* EdmundsAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = EdmundsAPIManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		839229621A79BF1F001E098F /* VehicleSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleSpecs.swift; sourceTree = "<group>"; };
 		83BD95A91A7BD9CE0074AECB /* VehicleMedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleMedia.swift; sourceTree = "<group>"; };
 		83BD95AC1A7BDB640074AECB /* VehicleMedia_SwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleMedia_SwiftTests.swift; sourceTree = "<group>"; };
-		83BD95AF1A7BDF490074AECB /* VehiclePricing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehiclePricing.swift; sourceTree = "<group>"; };
-		83BD95B21A7BE0C60074AECB /* VehiclePricing_SwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehiclePricing_SwiftTests.swift; sourceTree = "<group>"; };
+		83BD95AF1A7BDF490074AECB /* VehiclePricing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = VehiclePricing.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		83BD95B21A7BE0C60074AECB /* VehiclePricing_SwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = VehiclePricing_SwiftTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		83C861B21A7D3C8700D1ED16 /* VehicleContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleContent.swift; sourceTree = "<group>"; };
 		83C861B51A7D3E7C00D1ED16 /* VehicleContent_SwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleContent_SwiftTests.swift; sourceTree = "<group>"; };
+		83C861BB1A7D46DB00D1ED16 /* VehicleService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleService.swift; sourceTree = "<group>"; };
+		83C861C01A7D477F00D1ED16 /* VehicleService_SwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleService_SwiftTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +129,7 @@
 				83BD95AC1A7BDB640074AECB /* VehicleMedia_SwiftTests.swift */,
 				83BD95B21A7BE0C60074AECB /* VehiclePricing_SwiftTests.swift */,
 				83C861B51A7D3E7C00D1ED16 /* VehicleContent_SwiftTests.swift */,
+				83C861C01A7D477F00D1ED16 /* VehicleService_SwiftTests.swift */,
 				839229451A79BA6E001E098F /* Supporting Files */,
 			);
 			path = EdmundsAPITests;
@@ -145,6 +151,7 @@
 				83BD95A91A7BD9CE0074AECB /* VehicleMedia.swift */,
 				83BD95AF1A7BDF490074AECB /* VehiclePricing.swift */,
 				83C861B21A7D3C8700D1ED16 /* VehicleContent.swift */,
+				83C861BB1A7D46DB00D1ED16 /* VehicleService.swift */,
 			);
 			path = "EdmundsAPI-Swift";
 			sourceTree = "<group>";
@@ -249,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83C861BC1A7D46DB00D1ED16 /* VehicleService.swift in Sources */,
 				83C861B31A7D3C8700D1ED16 /* VehicleContent.swift in Sources */,
 				839229631A79BF1F001E098F /* EdmundsAPIManager.swift in Sources */,
 				839229341A79BA6E001E098F /* ViewController.swift in Sources */,
@@ -263,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83C861BD1A7D46DB00D1ED16 /* VehicleService.swift in Sources */,
 				83BD95B31A7BE0C60074AECB /* VehiclePricing_SwiftTests.swift in Sources */,
 				83BD95B41A7BEBBF0074AECB /* VehicleSpecs_SwiftTests.swift in Sources */,
 				83C861B41A7D3C8700D1ED16 /* VehicleContent.swift in Sources */,
@@ -271,6 +280,7 @@
 				83C861B71A7D3E8900D1ED16 /* VehicleContent_SwiftTests.swift in Sources */,
 				83BD95AE1A7BDB640074AECB /* VehicleMedia_SwiftTests.swift in Sources */,
 				839229641A79BF1F001E098F /* EdmundsAPIManager.swift in Sources */,
+				83C861C11A7D477F00D1ED16 /* VehicleService_SwiftTests.swift in Sources */,
 				83BD95B11A7BDF490074AECB /* VehiclePricing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

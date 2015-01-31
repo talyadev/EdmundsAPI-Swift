@@ -80,7 +80,7 @@ class VehiclePricing {
     }
     
     //MARK: PRICING: TRUE MARKET VALUE (TMV)
-    func calculateForNewVehicleWithCarMakeYearMSRPAndZipcode(#makeNiceName: String, year: String, msrp: String, zip: String, color: String?, model: String?, vehicleStyle: EdmundsAPIManager.CATEGORY?, drivenWheels: EdmundsAPIManager.CATEGORYDRIVENWHEELS?, fuelType: EdmundsAPIManager.CATEGORYFUELTYPE?, cylinders: String?, compressorType: EdmundsAPIManager.CATEGORYCOMPRESSORTYPE?, trim: String?, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+    func calculateForNewVehicleWithCarMakeYearMSRPAndZipcode(#makeNiceName: String, year: String, msrp: String, zip: String, color: String?, model: String?, vehicleStyle: EdmundsAPIManager.CATEGORY?, drivenWheels: EdmundsAPIManager.DRIVENWHEELS?, fuelType: EdmundsAPIManager.FUELTYPE?, cylinders: String?, compressorType: EdmundsAPIManager.COMPRESSORTYPE?, trim: String?, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
         var URLString = "https://api.edmunds.com/api/v1/vehicle/\(makeNiceName)/\(year)/price?msrp=\(msrp)&zip=\(zip)"
         if color != nil && !color!.isEmpty {
             URLString = URLString+"&color=\(color!)"
@@ -112,7 +112,7 @@ class VehiclePricing {
         })
     }
     
-    func calculateForNewVehicleWithCarVINMSRPAndZipcode(#vin: String, zip: String, msrp: String, color: EdmundsAPIManager.CATEGORYCOLOR, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+    func calculateForNewVehicleWithCarVINMSRPAndZipcode(#vin: String, zip: String, msrp: String, color: EdmundsAPIManager.COLOR, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
         let URLString = "https://api.edmunds.com/api/v1/vehicle/vin/\(vin)/price?zip=\(zip)&msrp=\(msrp)&color=\(color.rawValue)&api_key=\(manager.kAPIKEY)"
         manager.getJSON(URLString, dataResponse: { (data: NSData?, error: NSError?) -> Void in
             self.manager.getResult(data: data, error: error, edmundResponse: edmundResponse)
@@ -162,49 +162,49 @@ class VehiclePricing {
     }
     
     //MARK: PRICING: INCENTIVES AND REBATES
-    func getByID(#id: String, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+    func getIncentivesAndRebatesByID(#id: String, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
         let URLString = "https://api.edmunds.com/v1/api/incentive/incentiverepository/findbyid?id=\(id)&fmt=json&api_key=\(manager.kAPIKEY)"
         manager.getJSON(URLString, dataResponse: { (data: NSData?, error: NSError?) -> Void in
             self.manager.getResult(data: data, error: error, edmundResponse: edmundResponse)
         })
     }
     
-    func getByVehicleMakeID(#makeid: String, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+    func getIncentivesAndRebatesByVehicleMakeID(#makeid: String, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
         let URLString = "https://api.edmunds.com/v1/api/incentive/incentiverepository/findincentivesbymakeid?makeid=\(makeid)&fmt=json&api_key=\(manager.kAPIKEY)"
         manager.getJSON(URLString, dataResponse: { (data: NSData?, error: NSError?) -> Void in
             self.manager.getResult(data: data, error: error, edmundResponse: edmundResponse)
         })
     }
     
-    func getByVehicleStyleID(#styleid: String, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+    func getIncentivesAndRebatesByVehicleStyleID(#styleid: String, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
         let URLString = "https://api.edmunds.com/v1/api/incentive/incentiverepository/findincentivesbystyleid?styleid=\(styleid)&fmt=json&api_key=\(manager.kAPIKEY)"
         manager.getJSON(URLString, dataResponse: { (data: NSData?, error: NSError?) -> Void in
             self.manager.getResult(data: data, error: error, edmundResponse: edmundResponse)
         })
     }
     
-    func getByVehicleCategoryAndZipcode(#category: EdmundsAPIManager.CATEGORY, zip: String, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+    func getIncentivesAndRebatesByVehicleCategoryAndZipcode(#category: EdmundsAPIManager.CATEGORY, zip: String, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
         let URLString = "https://api.edmunds.com/v1/api/incentive/incentiverepository/findincentivesbycategoryandzipcode?category=\(category.rawValue)&zipcode=\(zip)&fmt=json&api_key=\(manager.kAPIKEY)"
         manager.getJSON(URLString, dataResponse: { (data: NSData?, error: NSError?) -> Void in
             self.manager.getResult(data: data, error: error, edmundResponse: edmundResponse)
         })
     }
     
-    func getByVehicleMakeIdAndZipcode(#makeid: String, zip: String, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+    func getIncentivesAndRebatesByVehicleMakeIdAndZipcode(#makeid: String, zip: String, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
         let URLString = "https://api.edmunds.com/v1/api/incentive/incentiverepository/findincentivesbymakeidandzipcode?makeid=\(makeid)&zipcode=\(zip)&fmt=json&api_key=\(manager.kAPIKEY)"
         manager.getJSON(URLString, dataResponse: { (data: NSData?, error: NSError?) -> Void in
             self.manager.getResult(data: data, error: error, edmundResponse: edmundResponse)
         })
     }
     
-    func getByVehicleModelYearIdAndZipcode(#modelyearid: String, zip: String, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+    func getIncentivesAndRebatesByVehicleModelYearIdAndZipcode(#modelyearid: String, zip: String, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
         let URLString = "https://api.edmunds.com/v1/api/incentive/incentiverepository/findincentivesbymodelyearidandzipcode?modelyearid=\(modelyearid)&zipcode=\(zip)&fmt=json&api_key=\(manager.kAPIKEY)"
         manager.getJSON(URLString, dataResponse: { (data: NSData?, error: NSError?) -> Void in
             self.manager.getResult(data: data, error: error, edmundResponse: edmundResponse)
         })
     }
     
-    func getByVehicleStyleIdAndZipcode(#styleid: String, zip: String, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
+    func getIncentivesAndRebatesByVehicleStyleIdAndZipcode(#styleid: String, zip: String, edmundResponse: EdmundsAPIManager.EdmundResponse) -> Void {
         let URLString = "https://api.edmunds.com/v1/api/incentive/incentiverepository/findincentivesbystyleidandzipcode?styleid=200477465&zipcode=90404&fmt=json&api_key=\(manager.kAPIKEY)"
         manager.getJSON(URLString, dataResponse: { (data: NSData?, error: NSError?) -> Void in
             self.manager.getResult(data: data, error: error, edmundResponse: edmundResponse)

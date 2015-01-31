@@ -138,7 +138,7 @@ class VehiclePricing_SwiftTests: XCTestCase {
     
     func testCalculateForNewVehicleWithCarMakeYearMSRPAndZipcode_OptionalValues() {
         let readyExpectation = self.expectationWithDescription("ready")
-        manager.calculateForNewVehicleWithCarMakeYearMSRPAndZipcode(makeNiceName: "honda", year: "2013", msrp: "32000", zip: "90404", color: "black", model: "accord", vehicleStyle: EdmundsAPIManager.CATEGORY.kSEDAN, drivenWheels: EdmundsAPIManager.CATEGORYDRIVENWHEELS.kFRONTWHEELDRIVE, fuelType: EdmundsAPIManager.CATEGORYFUELTYPE.kGAS, cylinders: "4", compressorType: nil, trim: nil) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+        manager.calculateForNewVehicleWithCarMakeYearMSRPAndZipcode(makeNiceName: "honda", year: "2013", msrp: "32000", zip: "90404", color: "black", model: "accord", vehicleStyle: EdmundsAPIManager.CATEGORY.kSEDAN, drivenWheels: EdmundsAPIManager.DRIVENWHEELS.kFRONTWHEELDRIVE, fuelType: EdmundsAPIManager.FUELTYPE.kGAS, cylinders: "4", compressorType: nil, trim: nil) { (dictionary: NSDictionary?, error: NSError?) -> Void in
             XCTAssertNotNil(dictionary, "dictionary is nil")
             readyExpectation.fulfill()
         }
@@ -149,7 +149,7 @@ class VehiclePricing_SwiftTests: XCTestCase {
     
     func testCalculateForNewVehicleWithCarVINMSRPAndZipcode() {
         let readyExpectation = self.expectationWithDescription("ready")
-        manager.calculateForNewVehicleWithCarVINMSRPAndZipcode(vin: "WAUCFAFH2DN018228", zip: "90404", msrp: "47000", color: EdmundsAPIManager.CATEGORYCOLOR.kWHITE) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+        manager.calculateForNewVehicleWithCarVINMSRPAndZipcode(vin: "WAUCFAFH2DN018228", zip: "90404", msrp: "47000", color: EdmundsAPIManager.COLOR.kWHITE) { (dictionary: NSDictionary?, error: NSError?) -> Void in
             XCTAssertNotNil(dictionary, "dictionary is nil")
             readyExpectation.fulfill()
         }
@@ -202,9 +202,9 @@ class VehiclePricing_SwiftTests: XCTestCase {
         })
     }
     
-    func testGetByID() {
+    func testGetIncentivesAndRebatesByID() {
         let readyExpectation = self.expectationWithDescription("ready")
-        manager.getByID(id: "3083078") { (dictionary: NSDictionary?, error: NSError?) -> Void in
+        manager.getIncentivesAndRebatesByID(id: "3083078") { (dictionary: NSDictionary?, error: NSError?) -> Void in
             XCTAssertNotNil(dictionary, "dictionary is nil")
             readyExpectation.fulfill()
         }
@@ -213,9 +213,9 @@ class VehiclePricing_SwiftTests: XCTestCase {
         })
     }
     
-    func testGetByVehicleMakeID() {
+    func testGetIncentivesAndRebatesByVehicleMakeID() {
         let readyExpectation = self.expectationWithDescription("ready")
-        manager.getByVehicleMakeID(makeid: "200000001") { (dictionary: NSDictionary?, error: NSError?) -> Void in
+        manager.getIncentivesAndRebatesByVehicleMakeID(makeid: "200000001") { (dictionary: NSDictionary?, error: NSError?) -> Void in
             XCTAssertNotNil(dictionary, "dictionary is nil")
             readyExpectation.fulfill()
         }
@@ -224,9 +224,9 @@ class VehiclePricing_SwiftTests: XCTestCase {
         })
     }
     
-    func testGetByVehicleStyleID() {
+    func testGetIncentivesAndRebatesByVehicleStyleID() {
         let readyExpectation = self.expectationWithDescription("ready")
-        manager.getByVehicleStyleID(styleid: "200477465") { (dictionary: NSDictionary?, error: NSError?) -> Void in
+        manager.getIncentivesAndRebatesByVehicleStyleID(styleid: "200477465") { (dictionary: NSDictionary?, error: NSError?) -> Void in
             XCTAssertNotNil(dictionary, "dictionary is nil")
             readyExpectation.fulfill()
         }
@@ -235,9 +235,9 @@ class VehiclePricing_SwiftTests: XCTestCase {
         })
     }
     
-    func testGetByVehicleCategoryAndZipcode() {
+    func testGetIncentivesAndRebatesByVehicleCategoryAndZipcode() {
         let readyExpectation = self.expectationWithDescription("ready")
-        manager.getByVehicleCategoryAndZipcode(category: EdmundsAPIManager.CATEGORY.k2DRSUV, zip: "90404") { (dictionary: NSDictionary?, error: NSError?) -> Void in
+        manager.getIncentivesAndRebatesByVehicleCategoryAndZipcode(category: EdmundsAPIManager.CATEGORY.k2DRSUV, zip: "90404") { (dictionary: NSDictionary?, error: NSError?) -> Void in
             XCTAssertNotNil(dictionary, "dictionary is nil")
             readyExpectation.fulfill()
         }
@@ -246,9 +246,9 @@ class VehiclePricing_SwiftTests: XCTestCase {
         })
     }
     
-    func testGetByVehicleMakeIdAndZipcode() {
+    func testGetIncentivesAndRebatesByVehicleMakeIdAndZipcode() {
         let readyExpectation = self.expectationWithDescription("ready")
-        manager.getByVehicleMakeIdAndZipcode(makeid: "200000001", zip: "90019") { (dictionary: NSDictionary?, error: NSError?) -> Void in
+        manager.getIncentivesAndRebatesByVehicleMakeIdAndZipcode(makeid: "200000001", zip: "90019") { (dictionary: NSDictionary?, error: NSError?) -> Void in
             XCTAssertNotNil(dictionary, "dictionary is nil")
             readyExpectation.fulfill()
         }
@@ -257,9 +257,9 @@ class VehiclePricing_SwiftTests: XCTestCase {
         })
     }
     
-    func testGetByVehicleModelYearIdAndZipcode() {
+    func testGetIncentivesAndRebatesByVehicleModelYearIdAndZipcode() {
         let readyExpectation = self.expectationWithDescription("ready")
-        manager.getByVehicleModelYearIdAndZipcode(modelyearid: "100537293", zip: "90019") { (dictionary: NSDictionary?, error: NSError?) -> Void in
+        manager.getIncentivesAndRebatesByVehicleModelYearIdAndZipcode(modelyearid: "100537293", zip: "90019") { (dictionary: NSDictionary?, error: NSError?) -> Void in
             XCTAssertNotNil(dictionary, "dictionary is nil")
             readyExpectation.fulfill()
         }
@@ -268,9 +268,9 @@ class VehiclePricing_SwiftTests: XCTestCase {
         })
     }
     
-    func testGetByVehicleStyleIdAndZipcode() {
+    func testGetIncentivesAndRebatesByVehicleStyleIdAndZipcode() {
         let readyExpectation = self.expectationWithDescription("ready")
-        manager.getByVehicleStyleIdAndZipcode(styleid: "200477465", zip: "90404") { (dictionary: NSDictionary?, error: NSError?) -> Void in
+        manager.getIncentivesAndRebatesByVehicleStyleIdAndZipcode(styleid: "200477465", zip: "90404") { (dictionary: NSDictionary?, error: NSError?) -> Void in
             XCTAssertNotNil(dictionary, "dictionary is nil")
             readyExpectation.fulfill()
         }

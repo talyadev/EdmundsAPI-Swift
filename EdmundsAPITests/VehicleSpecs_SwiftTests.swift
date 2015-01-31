@@ -359,7 +359,7 @@ class VehicleSpecs_SwiftTests: XCTestCase {
     //MARK: SPEC: VEHICLE COLORS AND OPTIONS
     func testGetListOfOptionsByStyleID() {
         let readyExpectation = self.expectationWithDescription("ready")
-        manager.getListOfOptionsByStyleID(id: "200477465", category: EdmundsAPIManager.CATEGORYOPTIONS.kEXTERIOR) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+        manager.getListOfOptionsByStyleID(id: "200477465", category: EdmundsAPIManager.OPTIONS.kEXTERIOR) { (dictionary: NSDictionary?, error: NSError?) -> Void in
             XCTAssertNotNil(dictionary, "dictionary is nil")
             readyExpectation.fulfill()
         }
@@ -392,7 +392,7 @@ class VehicleSpecs_SwiftTests: XCTestCase {
     
     func testGetListOfColorsByStyleID() {
         let readyExpectation = self.expectationWithDescription("ready")
-        manager.getListOfColorsByStyleID(id: "200477465", category: EdmundsAPIManager.CATEGORYOPTIONS.kEXTERIOR) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+        manager.getListOfColorsByStyleID(id: "200477465", category: EdmundsAPIManager.OPTIONS.kEXTERIOR) { (dictionary: NSDictionary?, error: NSError?) -> Void in
             XCTAssertNotNil(dictionary, "dictionary is nil")
             readyExpectation.fulfill()
         }
@@ -403,7 +403,7 @@ class VehicleSpecs_SwiftTests: XCTestCase {
     
     func testGetListOfColorsByStyleID_CategoryNil() {
         let readyExpectation = self.expectationWithDescription("ready")
-        manager.getListOfColorsByStyleID(id: "200477465", category: EdmundsAPIManager.CATEGORYOPTIONS.kEXTERIOR) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+        manager.getListOfColorsByStyleID(id: "200477465", category: EdmundsAPIManager.OPTIONS.kEXTERIOR) { (dictionary: NSDictionary?, error: NSError?) -> Void in
             XCTAssertNotNil(dictionary, "dictionary is nil")
             readyExpectation.fulfill()
         }
@@ -425,7 +425,7 @@ class VehicleSpecs_SwiftTests: XCTestCase {
     
     func testGetListOfEnginesByStyleID() {
         let readyExpectation = self.expectationWithDescription("ready")
-        manager.getListOfEnginesByStyleID(id: "200477465", availability: EdmundsAPIManager.CATEGORYAVAILABILITY.kSTANDARD) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+        manager.getListOfEnginesByStyleID(id: "200477465", availability: EdmundsAPIManager.AVAILABILITY.kSTANDARD) { (dictionary: NSDictionary?, error: NSError?) -> Void in
             XCTAssertNotNil(dictionary, "dictionary is nil")
             readyExpectation.fulfill()
         }
@@ -458,7 +458,7 @@ class VehicleSpecs_SwiftTests: XCTestCase {
     
     func testGetListOfTransmissionsByStyleID() {
         let readyExpectation = self.expectationWithDescription("ready")
-        manager.getListOfTransmissionsByStyleID(id: "200477465", availability: EdmundsAPIManager.CATEGORYAVAILABILITY.kSTANDARD) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+        manager.getListOfTransmissionsByStyleID(id: "200477465", availability: EdmundsAPIManager.AVAILABILITY.kSTANDARD) { (dictionary: NSDictionary?, error: NSError?) -> Void in
             XCTAssertNotNil(dictionary, "dictionary is nil")
             readyExpectation.fulfill()
         }
@@ -492,7 +492,7 @@ class VehicleSpecs_SwiftTests: XCTestCase {
     //MARK: SPEC: VEHICLE EQUIPMENT
     func testGetEquipmentDetailsByStyleID() {
         let readyExpectation = self.expectationWithDescription("ready")
-        manager.getEquipmentDetailsByStyleID(id: "200477465", categoryAvailability: EdmundsAPIManager.CATEGORYAVAILABILITY.kSTANDARD, equipmentType: EdmundsAPIManager.CATEGORYEQUIPMENTTYPE.kOTHER, name: EdmundsAPIManager.CATEGORYEQUIPMENTNAME.k1STROWSEATS) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+        manager.getEquipmentDetailsByStyleID(id: "200477465", availability: EdmundsAPIManager.AVAILABILITY.kSTANDARD, equipmentType: EdmundsAPIManager.EQUIPMENTTYPE.kOTHER, name: EdmundsAPIManager.EQUIPMENTNAME.k1STROWSEATS) { (dictionary: NSDictionary?, error: NSError?) -> Void in
             XCTAssertNotNil(dictionary, "dictionary is nil")
             readyExpectation.fulfill()
         }
@@ -503,7 +503,7 @@ class VehicleSpecs_SwiftTests: XCTestCase {
     
     func testGetEquipmentDetailsByStyleID_NameNil() {
         let readyExpectation = self.expectationWithDescription("ready")
-        manager.getEquipmentDetailsByStyleID(id: "200477465", categoryAvailability: EdmundsAPIManager.CATEGORYAVAILABILITY.kSTANDARD, equipmentType: EdmundsAPIManager.CATEGORYEQUIPMENTTYPE.kOTHER, name: nil) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+        manager.getEquipmentDetailsByStyleID(id: "200477465", availability: EdmundsAPIManager.AVAILABILITY.kSTANDARD, equipmentType: EdmundsAPIManager.EQUIPMENTTYPE.kOTHER, name: nil) { (dictionary: NSDictionary?, error: NSError?) -> Void in
             XCTAssertNotNil(dictionary, "dictionary is nil")
             readyExpectation.fulfill()
         }

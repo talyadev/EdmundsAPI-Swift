@@ -21,12 +21,14 @@ class EdmundsAPIManager {
     let vehicleMedia: VehicleMedia!
     let vehiclePricing: VehiclePricing!
     let vehicleContent: VehicleContent!
+    let vehicleService: VehicleService!
     
     init() {
         vehicleSpecs = VehicleSpecs(manager: self)
         vehicleMedia = VehicleMedia(manager: self)
         vehiclePricing = VehiclePricing(manager: self)
         vehicleContent = VehicleContent(manager: self)
+        vehicleService = VehicleService(manager: self)
     }
   
     //MARK: SPEC: VEHICLE MAKE
@@ -261,7 +263,7 @@ class EdmundsAPIManager {
         :param: category (optional) Option category
         :param: edmundResponse The response from Edmund API on completion
     */
-    func getListOfOptionsByStyleID(#id: String, category: CATEGORYOPTIONS?, edmundResponse: EdmundResponse) -> Void {
+    func getListOfOptionsByStyleID(#id: String, category: OPTIONS?, edmundResponse: EdmundResponse) -> Void {
         vehicleSpecs.getListOfOptionsByStyleID(id: id, category: category, edmundResponse: edmundResponse)
     }
     
@@ -284,7 +286,7 @@ class EdmundsAPIManager {
         :param: category (optional) Option category
         :param: edmundResponse The response from Edmund API on completion
     */
-    func getListOfColorsByStyleID(#id: String, category: CATEGORYOPTIONS?, edmundResponse: EdmundResponse) -> Void {
+    func getListOfColorsByStyleID(#id: String, category: OPTIONS?, edmundResponse: EdmundResponse) -> Void {
         vehicleSpecs.getListOfColorsByStyleID(id: id, category: category, edmundResponse: edmundResponse)
     }
     
@@ -308,7 +310,7 @@ class EdmundsAPIManager {
         :param: availability (optional) Option category
         :param: edmundResponse The response from Edmund API on completion
     */
-    func getListOfEnginesByStyleID(#id: String, availability: CATEGORYAVAILABILITY?, edmundResponse: EdmundResponse) -> Void {
+    func getListOfEnginesByStyleID(#id: String, availability: AVAILABILITY?, edmundResponse: EdmundResponse) -> Void {
         vehicleSpecs.getListOfEnginesByStyleID(id: id, availability: availability, edmundResponse: edmundResponse)
     }
     
@@ -331,7 +333,7 @@ class EdmundsAPIManager {
         :param: availability (optional) Option category
         :param: edmundResponse The response from Edmund API on completion
     */
-    func getListOfTransmissionsByStyleID(#id: String, availability: CATEGORYAVAILABILITY?, edmundResponse: EdmundResponse) -> Void {
+    func getListOfTransmissionsByStyleID(#id: String, availability: AVAILABILITY?, edmundResponse: EdmundResponse) -> Void {
         vehicleSpecs.getListOfTransmissionsByStyleID(id: id, availability: availability, edmundResponse: edmundResponse)
     }
     
@@ -352,13 +354,13 @@ class EdmundsAPIManager {
         Get list of equipment details for a specific style ID.
         
         :param: id Edmunds vehicle style ID
-        :param: categoryAvailability Equipment availability
+        :param: availability Equipment availability
         :param: equipmentType Equipment category
         :param: name (optional) Equipment category
         :param: edmundResponse The response from Edmund API on completion
     */
-    func getEquipmentDetailsByStyleID(#id: String, categoryAvailability: CATEGORYAVAILABILITY, equipmentType: CATEGORYEQUIPMENTTYPE, name: CATEGORYEQUIPMENTNAME?, edmundResponse: EdmundResponse) -> Void {
-        vehicleSpecs.getEquipmentDetailsByStyleID(id: id, categoryAvailability: categoryAvailability, equipmentType: equipmentType, name: name, edmundResponse: edmundResponse)
+    func getEquipmentDetailsByStyleID(#id: String, availability: AVAILABILITY, equipmentType: EQUIPMENTTYPE, name: EQUIPMENTNAME?, edmundResponse: EdmundResponse) -> Void {
+        vehicleSpecs.getEquipmentDetailsByStyleID(id: id, availability: availability, equipmentType: equipmentType, name: name, edmundResponse: edmundResponse)
     }
     
     /**
@@ -572,7 +574,7 @@ class EdmundsAPIManager {
         :param: trim (optional) Vehicle trim name
         :param: edmundResponse The response from Edmund API on completion
     */
-    func calculateForNewVehicleWithCarMakeYearMSRPAndZipcode(#makeNiceName: String, year: String, msrp: String, zip: String, color: String?, model: String?, vehicleStyle: CATEGORY?, drivenWheels: CATEGORYDRIVENWHEELS?, fuelType: CATEGORYFUELTYPE?, cylinders: String?, compressorType: CATEGORYCOMPRESSORTYPE?, trim: String?, edmundResponse: EdmundResponse) -> Void {
+    func calculateForNewVehicleWithCarMakeYearMSRPAndZipcode(#makeNiceName: String, year: String, msrp: String, zip: String, color: String?, model: String?, vehicleStyle: CATEGORY?, drivenWheels: DRIVENWHEELS?, fuelType: FUELTYPE?, cylinders: String?, compressorType: COMPRESSORTYPE?, trim: String?, edmundResponse: EdmundResponse) -> Void {
         vehiclePricing.calculateForNewVehicleWithCarMakeYearMSRPAndZipcode(makeNiceName: makeNiceName, year: year, msrp: msrp, zip: zip, color: color, model: model, vehicleStyle: vehicleStyle, drivenWheels: drivenWheels, fuelType: fuelType, cylinders: cylinders, compressorType: compressorType, trim: trim,  edmundResponse: edmundResponse)
     }
     
@@ -586,7 +588,7 @@ class EdmundsAPIManager {
         :param: color Vehicle color (i.e. black, white, blue, ...etc)
         :param: edmundResponse The response from Edmund API on completion
     */
-    func calculateForNewVehicleWithCarVINMSRPAndZipcode(#vin: String, zip: String, msrp: String, color: CATEGORYCOLOR, edmundResponse: EdmundResponse) -> Void {
+    func calculateForNewVehicleWithCarVINMSRPAndZipcode(#vin: String, zip: String, msrp: String, color: COLOR, edmundResponse: EdmundResponse) -> Void {
         vehiclePricing.calculateForNewVehicleWithCarVINMSRPAndZipcode(vin: vin, zip: zip, msrp: msrp, color: color, edmundResponse: edmundResponse)
     }
     
@@ -642,84 +644,84 @@ class EdmundsAPIManager {
     
     //MARK: PRICING: INCENTIVES AND REBATES
     /**
-        Get by ID
+        Get Incentives and Rebates by ID
         Get incentives and rebates by ID.
         
         :param: id Incentive ID
         :param: edmundResponse The response from Edmund API on completion
     */
-    func getByID(#id: String, edmundResponse: EdmundResponse) -> Void {
-        vehiclePricing.getByID(id: id, edmundResponse: edmundResponse)
+    func getIncentivesAndRebatesByID(#id: String, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.getIncentivesAndRebatesByID(id: id, edmundResponse: edmundResponse)
     }
     
     /**
-        Get by Vehicle Make ID
+        Get Incentives and Rebates by Vehicle Make ID
         Get incentives and rebates by vehicle make ID.
         
         :param: makeid Vehicle make ID
         :param: edmundResponse The response from Edmund API on completion
     */
-    func getByVehicleMakeID(#makeid: String, edmundResponse: EdmundResponse) -> Void {
-        vehiclePricing.getByVehicleMakeID(makeid: makeid, edmundResponse: edmundResponse)
+    func getIncentivesAndRebatesByVehicleMakeID(#makeid: String, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.getIncentivesAndRebatesByVehicleMakeID(makeid: makeid, edmundResponse: edmundResponse)
     }
     
     /**
-        Get by Vehicle Style ID
+        Get Incentives and Rebates by Vehicle Style ID
         Get incentives and rebates by vehicle style ID.
         
         :param: styleid Vehicle style ID
         :param: edmundResponse The response from Edmund API on completion
     */
-    func getByVehicleStyleID(#styleid: String, edmundResponse: EdmundResponse) -> Void {
-        vehiclePricing.getByVehicleStyleID(styleid: styleid, edmundResponse: edmundResponse)
+    func getIncentivesAndRebatesByVehicleStyleID(#styleid: String, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.getIncentivesAndRebatesByVehicleStyleID(styleid: styleid, edmundResponse: edmundResponse)
     }
     
     /**
-        Get by Vehicle Category and Zipcode
+        Get Incentives and Rebates by Vehicle Category and Zipcode
         Get incentives and rebates by vehicle category and zipcode.
         
         :param: category Vehicle category
         :param: zip Five-digit zipcode
         :param: edmundResponse The response from Edmund API on completion
     */
-    func getByVehicleCategoryAndZipcode(#category: CATEGORY, zip: String, edmundResponse: EdmundResponse) -> Void {
-        vehiclePricing.getByVehicleCategoryAndZipcode(category: category, zip: zip, edmundResponse: edmundResponse)
+    func getIncentivesAndRebatesByVehicleCategoryAndZipcode(#category: CATEGORY, zip: String, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.getIncentivesAndRebatesByVehicleCategoryAndZipcode(category: category, zip: zip, edmundResponse: edmundResponse)
     }
     
     /**
-        Get by Vehicle Make ID and Zipcode
+        Get Incentives and Rebates by Vehicle Make ID and Zipcode
         Get incentives and rebates by vehicle make ID and zipcode.
         
         :param: makeid Vehicle make ID
         :param: zip Five-digit zipcode
         :param: edmundResponse The response from Edmund API on completion
     */
-    func getByVehicleMakeIdAndZipcode(#makeid: String, zip: String, edmundResponse: EdmundResponse) -> Void {
-        vehiclePricing.getByVehicleMakeIdAndZipcode(makeid: makeid, zip: zip, edmundResponse: edmundResponse)
+    func getIncentivesAndRebatesByVehicleMakeIdAndZipcode(#makeid: String, zip: String, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.getIncentivesAndRebatesByVehicleMakeIdAndZipcode(makeid: makeid, zip: zip, edmundResponse: edmundResponse)
     }
     
     /**
-        Get by Vehicle Model Year ID and Zipcode
+        Get Incentives and Rebates by Vehicle Model Year ID and Zipcode
         Get incentives and rebates by vehicle model year ID and zipcode.
         
         :param: modelyearid Vehicle model year ID
         :param: zip Five-digit zipcode
         :param: edmundResponse The response from Edmund API on completion
     */
-    func getByVehicleModelYearIdAndZipcode(#modelyearid: String, zip: String, edmundResponse: EdmundResponse) -> Void {
-        vehiclePricing.getByVehicleModelYearIdAndZipcode(modelyearid: modelyearid, zip: zip, edmundResponse: edmundResponse)
+    func getIncentivesAndRebatesByVehicleModelYearIdAndZipcode(#modelyearid: String, zip: String, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.getIncentivesAndRebatesByVehicleModelYearIdAndZipcode(modelyearid: modelyearid, zip: zip, edmundResponse: edmundResponse)
     }
     
     /**
-        Get by Vehicle Style ID and Zipcode
+        Get Incentives and Rebates by Vehicle Style ID and Zipcode
         Get incentives and rebates by vehicle style ID and zipcode.
         
         :param: styleid Vehicle style ID
         :param: zip Five-digit zipcode
         :param: edmundResponse The response from Edmund API on completion
     */
-    func getByVehicleStyleIdAndZipcode(#styleid: String, zip: String, edmundResponse: EdmundResponse) -> Void {
-        vehiclePricing.getByVehicleStyleIdAndZipcode(styleid: styleid, zip: zip, edmundResponse: edmundResponse)
+    func getIncentivesAndRebatesByVehicleStyleIdAndZipcode(#styleid: String, zip: String, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.getIncentivesAndRebatesByVehicleStyleIdAndZipcode(styleid: styleid, zip: zip, edmundResponse: edmundResponse)
     }
     
     //MARK: CONTENT: EDMUNDS CAR RAITINGS
@@ -777,6 +779,110 @@ class EdmundsAPIManager {
     func getConsumerRatingsAndReviewsByCarStyleId(#styleid: String, sortby: String, pagenum: String, pagesize: String, edmundResponse: EdmundResponse) -> Void {
         vehicleContent.getConsumerRatingsAndReviewsByCarStyleId(styleid: styleid, sortby: sortby, pagenum: pagenum, pagesize: pagesize, edmundResponse: edmundResponse)
     }
+    
+    //MARK: SERVICE: VEHICLE MAINTENANCE
+    /**
+        Get Maintenance Schedule by ID
+        Get a specific maintenance schedule by ID.
+        
+        :param: id Vehicle maintenance action ID
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getMaintenanceScheduleById(#id: String, edmundResponse: EdmundResponse) -> Void {
+        vehicleService.getMaintenanceScheduleById(id: id, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get by Vehicle Model Year ID
+        Get a specific maintenance schedule for a certain vehicle model year ID.
+        
+        :param: modelyearid Vehicle model year ID
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getMaintenanceScheduleByModelYearId(#modelyearid: String, edmundResponse: EdmundResponse) -> Void {
+        vehicleService.getMaintenanceScheduleByModelYearId(modelyearid: modelyearid, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get Vehicle Model Years with Maintenance Schedules
+        Get a list of all vehicle model years with a maintenance schedule.
+        
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getVehicleModelYearsWithMaintenanceSchedules(#edmundResponse: EdmundResponse) -> Void {
+        vehicleService.getVehicleModelYearsWithMaintenanceSchedules(edmundResponse: edmundResponse)
+    }
+    
+    //MARK: SERVICE: VEHICLE RECALLS
+    /**
+        Get Recall by ID
+        Get a specific vehicle recall by ID.
+        
+        :param: id Vehicle recall ID
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getRecallById(#id: String, edmundResponse: EdmundResponse) -> Void {
+        vehicleService.getRecallById(id: id, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get Recall by Vehicle Model Year ID
+        Get a specific vehicle recall for a certain vehicle model year ID.
+        
+        :param: modelyearid Vehicle modelyear ID
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getRecallByVehicleModelYearId(#modelyearid: String, edmundResponse: EdmundResponse) -> Void {
+        vehicleService.getRecallByVehicleModelYearId(modelyearid: modelyearid, edmundResponse: edmundResponse)
+    }
+    
+    //MARK: SERVICE: VEHICLE SERVICE BULLETIN
+    /**
+        Get Service Bulletin by ID
+        Get a specific vehicle service bulletin by ID.
+        
+        :param: id Vehicle service bulletin ID
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getServiceBulletinById(#id: String, edmundResponse: EdmundResponse) -> Void {
+        vehicleService.getServiceBulletinById(id: id, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get Service Bulletin by Vehicle Model Year ID
+        Get a specific vehicle service bulletin by model year ID.
+        
+        :param: modelyearid Vehicle model year ID
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getServiceBulletinByVehicleModelYearId(#modelyearid: String, edmundResponse: EdmundResponse) -> Void {
+        vehicleService.getServiceBulletinByVehicleModelYearId(modelyearid: modelyearid, edmundResponse: edmundResponse)
+    }
+    
+    //MARK: SERVICE: VEHICLE NOTES
+    /**
+        Get Notes by Vehicle Style ID
+        Get maintenance notes for a specific vehicle.
+        
+        :param: styleid Vehicle style ID
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getNotesByVehicleStyleId(#styleid: String, edmundResponse: EdmundResponse) -> Void {
+        vehicleService.getNotesByVehicleStyleId(styleid: styleid, edmundResponse: edmundResponse)
+    }
+    
+    //MARK: SERVICE: LOCAL LABOR RATE
+    /**
+        Get Local Labor Rate by Zipcode
+        Get service labor rates in dollars per hour for a zipcode.
+        
+        :param: zipcode Five-digit zipcode
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getLocalLaborRatesByZipcode(#zipcode: String, edmundResponse: EdmundResponse) -> Void {
+        vehicleService.getLocalLaborRatesByZipcode(zipcode: zipcode, edmundResponse: edmundResponse)
+    }
+    
     
     //MARK: HELPER METHODS
     /**
@@ -906,7 +1012,7 @@ class EdmundsAPIManager {
         case kPASSENGERMINIVAN = "Passenger+Minivan"
     }
     
-    enum CATEGORYOPTIONS: String {
+    enum OPTIONS: String {
         case kINTERIOR = "Interior"
         case kEXTERIOR = "Exterior"
         case kROOF = "Roof"
@@ -917,12 +1023,12 @@ class EdmundsAPIManager {
         case kOTHER = "Other"
     }
     
-    enum CATEGORYAVAILABILITY: String {
+    enum AVAILABILITY: String {
         case kSTANDARD = "standard"
         case kOPTIONAL = "optional"
     }
     
-    enum CATEGORYEQUIPMENTTYPE: String {
+    enum EQUIPMENTTYPE: String {
         case kAUDIOSYSTEM = "AUDIO_SYSTEM"
         case kCOLOR = "COLOR"
         case kENGINE = "ENGINE"
@@ -934,7 +1040,7 @@ class EdmundsAPIManager {
         case kTIRES = "TIRES"
     }
     
-    enum CATEGORYEQUIPMENTNAME: String {
+    enum EQUIPMENTNAME: String {
         case k1STROWSEATS = "1ST_ROW_SEATS"
         case k2NDROWSEATS = "2ND_ROW_SEATS"
         case k3RDROWSEATS = "3RD_ROW_SEATS"
@@ -987,14 +1093,14 @@ class EdmundsAPIManager {
         case kWINDOWS = "WINDOWS"
     }
     
-    enum CATEGORYDRIVENWHEELS: String {
+    enum DRIVENWHEELS: String {
         case kALLWHEELDRIVE = "all-wheel-drive"
         case kFRONTWHEELDRIVE = "front-wheel-drive"
         case kREARWHEELDRIVE = "rear-wheel-drive"
         case kFOURWHEELDRIVE = "four-wheel-drive"
     }
     
-    enum CATEGORYFUELTYPE: String {
+    enum FUELTYPE: String {
         case kELECTRIC = "electric"
         case kNATURALGASCNG = "natural-gas-cng"
         case kGAS = "gas"
@@ -1003,13 +1109,13 @@ class EdmundsAPIManager {
         case kHYBRID = "hybrid"
     }
     
-    enum CATEGORYCOMPRESSORTYPE: String {
+    enum COMPRESSORTYPE: String {
         case kSUPERCHARGER = "supercharger"
         case kTWINTURBOCHARGER = "twin-turbocharger"
         case kTURBOCHARGER = "turbocharger"
     }
     
-    enum CATEGORYCOLOR: String {
+    enum COLOR: String {
         case kBLACK = "black"
         case kDARKBLUE = "dark-blue"
         case kDARKBROWN = "dark-brown"
