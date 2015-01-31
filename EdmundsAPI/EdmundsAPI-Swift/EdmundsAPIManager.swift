@@ -17,6 +17,7 @@ class EdmundsAPIManager {
     typealias EdmundResponseMedia = (NSArray?, NSError?) -> Void
     typealias EdmundResponseString = (String?, NSError?) -> Void
     typealias DataResponse = (NSData?, NSError?) -> Void
+    
     let vehicleSpecs: VehicleSpecs!
     let vehicleMedia: VehicleMedia!
     let vehiclePricing: VehiclePricing!
@@ -918,7 +919,16 @@ class EdmundsAPIManager {
         }
         else {
             let dictionary = parseJSON(data!)
-            edmundResponse(dictionary, nil)
+            var err: NSError?
+            if let status = dictionary["status"] as? NSString {
+                if status == "BAD_REQUEST" {
+                    err = NSError(domain: "ERROR", code: 0, userInfo: dictionary)
+                    edmundResponse(nil, err!)
+                }
+                else {
+                    edmundResponse(dictionary, nil)
+                }
+            }
         }
     }
     
@@ -935,12 +945,17 @@ class EdmundsAPIManager {
         }
         else {
             let array = parseJSONArray(data!)
+            var err: NSError?
+            if array.count == 0 {
+                err = NSError(domain: "ERROR - styleid may be incorrect.", code: 0, userInfo: nil)
+                edmundResponse(nil, err!)
+            }
             edmundResponse(array, nil)
         }
     }
     
     /**
-        Get Result
+        Get Result String
         
         :param: data The JSON data
         :param: error The download error message
@@ -964,7 +979,6 @@ class EdmundsAPIManager {
         :return: dictionary The JSON dictionary
     */
     func parseJSON(data: NSData) -> NSDictionary {
-        //var err: NSError
         let dictionary: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
         return dictionary
     }
@@ -976,7 +990,6 @@ class EdmundsAPIManager {
         :return: array The JSON array
     */
     func parseJSONArray(data: NSData) -> NSArray {
-        //var err: NSError
         let array: NSArray = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSArray
         return array
     }
