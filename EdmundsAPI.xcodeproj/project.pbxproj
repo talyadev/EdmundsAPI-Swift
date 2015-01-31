@@ -86,6 +86,7 @@
 		839229231A79BA6D001E098F = {
 			isa = PBXGroup;
 			children = (
+				83C861C21A7D6D9100D1ED16 /* README.md */,
 				8392292E1A79BA6E001E098F /* EdmundsAPI */,
 				839229441A79BA6E001E098F /* EdmundsAPITests */,
 				8392292D1A79BA6E001E098F /* Products */,
@@ -140,7 +141,6 @@
 			isa = PBXGroup;
 			children = (
 				839229461A79BA6E001E098F /* Info.plist */,
-				83C861C21A7D6D9100D1ED16 /* README.md */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
