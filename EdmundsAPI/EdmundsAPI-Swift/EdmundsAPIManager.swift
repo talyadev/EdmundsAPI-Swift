@@ -15,6 +15,7 @@ class EdmundsAPIManager {
     
     typealias EdmundResponse = (NSDictionary?, NSError?) -> Void
     typealias EdmundResponseMedia = (NSArray?, NSError?) -> Void
+    typealias EdmundResponseString = (String?, NSError?) -> Void
     typealias DataResponse = (NSData?, NSError?) -> Void
     let vehicleSpecs: VehicleSpecs!
     let vehicleMedia: VehicleMedia!
@@ -573,6 +574,152 @@ class EdmundsAPIManager {
         vehiclePricing.calculateForNewVehicleWithCarMakeYearMSRPAndZipcode(makeNiceName: makeNiceName, year: year, msrp: msrp, zip: zip, color: color, model: model, vehicleStyle: vehicleStyle, drivenWheels: drivenWheels, fuelType: fuelType, cylinders: cylinders, compressorType: compressorType, trim: trim,  edmundResponse: edmundResponse)
     }
     
+    /**
+        Calculate for New Vehicle with Car VIN, MSRP, and Zipcode
+        Get basic vehicle information and pricing by supplying the vehicle's VIN, MSRP price and the zipcode in which it's located.
+        
+        :param: vin Vehicle VIN
+        :param: zip Five-digit zipcode
+        :param: msrp Vehicle MSRP
+        :param: color Vehicle color (i.e. black, white, blue, ...etc)
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func calculateForNewVehicleWithCarVINMSRPAndZipcode(#vin: String, zip: String, msrp: String, color: CATEGORYCOLOR, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.calculateForNewVehicleWithCarVINMSRPAndZipcode(vin: vin, zip: zip, msrp: msrp, color: color, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Calculate for New Vehicle with Car Style ID and Zipcode
+        
+        :param: styleId Vehicle style id
+        :param: zip Five-digit zipcode
+        :param: colorId (optional) Vehicle color ID (&colorid=xxx&colorid=xxx&colorid=xxx for multiples)
+        :param: optionId (optional) Vehicle option ID (&optionid=xxx&optionid=xxx&optionid=xxx for multiples)
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func calculateForNewVehicleWithCarStyleIdAndZipcode(#styleId: String, zip: String, colorId: String?, optionId: String?, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.calculateForNewVehicleWithCarStyleIdAndZipcode(styleId: styleId, zip: zip, colorId: colorId, optionId: optionId, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Calculate for New Vehicle with Car Style ID, Condition, Mileage, and Zipcode
+        
+        :param: styleId Vehicle style id
+        :param: condition Vehicle condition
+        :param: mileage Vehicle milage (e.g. 24000)
+        :param: zip Five-digit zipcode
+        :param: colorId (optional) Vehicle color ID (&colorid=xxx&colorid=xxx&colorid=xxx for multiples)
+        :param: optionId (optional) Vehicle option ID (&optionid=xxx&optionid=xxx&optionid=xxx for multiples)
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func calculateForNewVehicleWithCarStyleIdConditionMileageAndZipcode(#styleId: String, condition: CONDITION, mileage: String, zip: String, colorId: String?, optionId: String?, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.calculateForNewVehicleWithCarStyleIdConditionMileageAndZipcode(styleId: styleId, condition: condition, mileage: mileage, zip: zip, colorId: colorId, optionId: optionId, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Calculate for the Typically Equipped Vehicle
+        
+        :param: styleId Vehicle style id
+        :param: zip Five-digit zipcode
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func calculateForTheTypicallyEquippedVehicle(#styleId: String, zip: String, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.calculateForTheTypicallyEquippedVehicle(styleId: styleId, zip: zip, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Calculate for the Certified Vehicle
+        
+        :param: styleId Vehicle style id
+        :param: zip Five-digit zipcode
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func calculateForTheCertifiedVehicle(#styleId: String, zip: String, edmundResponse: EdmundResponseString) -> Void {
+        vehiclePricing.calculateForTheCertifiedVehicle(styleId: styleId, zip: zip, edmundResponse: edmundResponse)
+    }
+    
+    //MARK: PRICING: INCENTIVES AND REBATES
+    /**
+        Get by ID
+        Get incentives and rebates by ID
+        
+        :param: id Incentive ID
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getByID(#id: String, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.getByID(id: id, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get by Vehicle Make ID
+        Get incentives and rebates by vehicle make ID
+        
+        :param: makeid Vehicle make ID
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getByVehicleMakeID(#makeid: String, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.getByVehicleMakeID(makeid: makeid, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get by Vehicle Style ID
+        Get incentives and rebates by vehicle style ID
+        
+        :param: styleid Vehicle style ID
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getByVehicleStyleID(#styleid: String, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.getByVehicleStyleID(styleid: styleid, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get by Vehicle Category and Zipcode
+        Get incentives and rebates by vehicle category and zipcode
+        
+        :param: category Vehicle category
+        :param: zip Five-digit zipcode
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getByVehicleCategoryAndZipcode(#category: CATEGORY, zip: String, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.getByVehicleCategoryAndZipcode(category: category, zip: zip, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get by Vehicle Make ID and Zipcode
+        Get incentives and rebates by vehicle make ID and zipcode
+        
+        :param: makeid Vehicle make ID
+        :param: zip Five-digit zipcode
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getByVehicleMakeIdAndZipcode(#makeid: String, zip: String, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.getByVehicleMakeIdAndZipcode(makeid: makeid, zip: zip, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get by Vehicle Model Year ID and Zipcode
+        Get incentives and rebates by vehicle model year ID and zipcode
+        
+        :param: modelyearid Vehicle model year ID
+        :param: zip Five-digit zipcode
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getByVehicleModelYearIdAndZipcode(#modelyearid: String, zip: String, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.getByVehicleModelYearIdAndZipcode(modelyearid: modelyearid, zip: zip, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get by Vehicle Style ID and Zipcode
+        Get incentives and rebates by vehicle style ID and zipcode
+        
+        :param: styleid Vehicle style ID
+        :param: zip Five-digit zipcode
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getByVehicleStyleIdAndZipcode(#styleid: String, zip: String, edmundResponse: EdmundResponse) -> Void {
+        vehiclePricing.getByVehicleStyleIdAndZipcode(styleid: styleid, zip: zip, edmundResponse: edmundResponse)
+    }
+    
     //MARK: HELPER METHODS
     /**
         Get JSON data
@@ -612,11 +759,11 @@ class EdmundsAPIManager {
     }
     
     /**
-    Get Result Media
-    
-    :param: data The JSON data
-    :param: error The download error message
-    :param: dataResponse The response from Edmund API on completion
+        Get Result Media
+        
+        :param: data The JSON data
+        :param: error The download error message
+        :param: dataResponse The response from Edmund API on completion
     */
     func getResult(#data: NSData?, error: NSError?, edmundResponse: EdmundResponseMedia) {
         if let err = error {
@@ -625,6 +772,23 @@ class EdmundsAPIManager {
         else {
             let array = parseJSONArray(data!)
             edmundResponse(array, nil)
+        }
+    }
+    
+    /**
+        Get Result
+        
+        :param: data The JSON data
+        :param: error The download error message
+        :param: dataResponse The response from Edmund API on completion
+    */
+    func getResult(#data: NSData?, error: NSError?, edmundResponse: EdmundResponseString) {
+        if let err = error {
+            edmundResponse(nil, err)
+        }
+        else {
+            let str = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            edmundResponse(str, nil)
         }
     }
 
@@ -785,5 +949,34 @@ class EdmundsAPIManager {
         case kSUPERCHARGER = "supercharger"
         case kTWINTURBOCHARGER = "twin-turbocharger"
         case kTURBOCHARGER = "turbocharger"
+    }
+    
+    enum CATEGORYCOLOR: String {
+        case kBLACK = "black"
+        case kDARKBLUE = "dark-blue"
+        case kDARKBROWN = "dark-brown"
+        case kDARKGREEN = "dark-green"
+        case kDARKRED = "dark-red"
+        case kGOLD = "gold"
+        case kGRAY = "gray"
+        case kLIGHTBLUE = "light-blue"
+        case kLIGHTBROWN = "light-brown"
+        case kLIGHTGREEN = "light-green"
+        case kOFFWHITECREAM = "off-whitecream"
+        case kORANGE = "orange"
+        case kOTHER = "other"
+        case kPURPLE = "purple"
+        case kRED = "red"
+        case kSILVER = "silver"
+        case kWHITE = "white"
+        case kYELLOW = "yellow"
+    }
+    
+    enum CONDITION: String {
+        case kOUTSTANDING = "Outstanding"
+        case kCLEAN = "Clean"
+        case kAVERAGE = "Average"
+        case kROUGH = "Rough"
+        case kDAMAGED = "Damaged"
     }
 }
