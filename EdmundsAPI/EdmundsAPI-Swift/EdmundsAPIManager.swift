@@ -20,11 +20,13 @@ class EdmundsAPIManager {
     let vehicleSpecs: VehicleSpecs!
     let vehicleMedia: VehicleMedia!
     let vehiclePricing: VehiclePricing!
+    let vehicleContent: VehicleContent!
     
     init() {
         vehicleSpecs = VehicleSpecs(manager: self)
         vehicleMedia = VehicleMedia(manager: self)
         vehiclePricing = VehiclePricing(manager: self)
+        vehicleContent = VehicleContent(manager: self)
     }
   
     //MARK: SPEC: VEHICLE MAKE
@@ -641,7 +643,7 @@ class EdmundsAPIManager {
     //MARK: PRICING: INCENTIVES AND REBATES
     /**
         Get by ID
-        Get incentives and rebates by ID
+        Get incentives and rebates by ID.
         
         :param: id Incentive ID
         :param: edmundResponse The response from Edmund API on completion
@@ -652,7 +654,7 @@ class EdmundsAPIManager {
     
     /**
         Get by Vehicle Make ID
-        Get incentives and rebates by vehicle make ID
+        Get incentives and rebates by vehicle make ID.
         
         :param: makeid Vehicle make ID
         :param: edmundResponse The response from Edmund API on completion
@@ -663,7 +665,7 @@ class EdmundsAPIManager {
     
     /**
         Get by Vehicle Style ID
-        Get incentives and rebates by vehicle style ID
+        Get incentives and rebates by vehicle style ID.
         
         :param: styleid Vehicle style ID
         :param: edmundResponse The response from Edmund API on completion
@@ -674,7 +676,7 @@ class EdmundsAPIManager {
     
     /**
         Get by Vehicle Category and Zipcode
-        Get incentives and rebates by vehicle category and zipcode
+        Get incentives and rebates by vehicle category and zipcode.
         
         :param: category Vehicle category
         :param: zip Five-digit zipcode
@@ -686,7 +688,7 @@ class EdmundsAPIManager {
     
     /**
         Get by Vehicle Make ID and Zipcode
-        Get incentives and rebates by vehicle make ID and zipcode
+        Get incentives and rebates by vehicle make ID and zipcode.
         
         :param: makeid Vehicle make ID
         :param: zip Five-digit zipcode
@@ -698,7 +700,7 @@ class EdmundsAPIManager {
     
     /**
         Get by Vehicle Model Year ID and Zipcode
-        Get incentives and rebates by vehicle model year ID and zipcode
+        Get incentives and rebates by vehicle model year ID and zipcode.
         
         :param: modelyearid Vehicle model year ID
         :param: zip Five-digit zipcode
@@ -710,7 +712,7 @@ class EdmundsAPIManager {
     
     /**
         Get by Vehicle Style ID and Zipcode
-        Get incentives and rebates by vehicle style ID and zipcode
+        Get incentives and rebates by vehicle style ID and zipcode.
         
         :param: styleid Vehicle style ID
         :param: zip Five-digit zipcode
@@ -718,6 +720,62 @@ class EdmundsAPIManager {
     */
     func getByVehicleStyleIdAndZipcode(#styleid: String, zip: String, edmundResponse: EdmundResponse) -> Void {
         vehiclePricing.getByVehicleStyleIdAndZipcode(styleid: styleid, zip: zip, edmundResponse: edmundResponse)
+    }
+    
+    //MARK: CONTENT: EDMUNDS CAR RAITINGS
+    /**
+        Get Car Ratings by Make/Model/Year
+        Get vehicle ratings grade by make/model/year, on select 2013 and newer vehicles.
+        
+        :param: makeNiceName Vehicle make niceName
+        :param: modelNiceName Vehicle model niceName
+        :param: year Vehicle four-digit year
+        :param: submodel Vehicle submodel (i.e. sedan, suv, ...etc)
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getCarRatingsByMakeModelYear(#makeNiceName: String, modelNiceName: String, year: String, submodel: CATEGORY, edmundResponse: EdmundResponse) -> Void {
+        vehicleContent.getCarRatingsByMakeModelYear(makeNiceName: makeNiceName, modelNiceName: modelNiceName, year: year, submodel: submodel, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get Car Ratings by Vehicle Style ID
+        Get vehicle ratings grade by style ID, on select 2013 and newer vehicles.
+        
+        :param: styleid Vehicle style ID
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getCarRatingsByVehicleStyleId(#styleid: String, edmundResponse: EdmundResponse) -> Void {
+        vehicleContent.getCarRatingsByVehicleStyleId(styleid: styleid, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get Consumer Ratings and Reviews by Car Make/Model/Year
+        Get vehicle ratings and reviews by providing vehicle make/model/year data.
+        
+        :param: makeNiceName Vehicle make niceName
+        :param: modelNiceName Vehicle model niceName
+        :param: year Vehicle four-digit year
+        :param: sortby Sort the reviews by any string of the format field or field:direction, where field = created, thumbsUp, or avgRating and direction = ASC (ascending) or DESC (descending). Default: created:DESC
+        :param: pagenum The page number of the paginated result. Default: 1
+        :param: pagesize The maximum number of returned reviews. Default: 10
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getConsumerRatingsAndReviewsByCarMakeModelYear(#makeNiceName: String, modelNiceName: String, year: String, sortby: String, pagenum: String, pagesize: String, edmundResponse: EdmundResponse) -> Void {
+        vehicleContent.getConsumerRatingsAndReviewsByCarMakeModelYear(makeNiceName: makeNiceName, modelNiceName: modelNiceName, year: year, sortby: sortby, pagenum: pagenum, pagesize: pagesize, edmundResponse: edmundResponse)
+    }
+    
+    /**
+        Get Consumer Ratings and Reviews by Car Style ID
+        Get vehicle ratings and reviews by providing vehicle make/model/year data.
+        
+        :param: styleid Vehicle style ID
+        :param: sortby Sort the reviews by any string of the format field or field:direction, where field = created, thumbsUp, or avgRating and direction = ASC (ascending) or DESC (descending). Default: created:DESC
+        :param: pagenum The page number of the paginated result. Default: 1
+        :param: pagesize The maximum number of returned reviews. Default: 10
+        :param: edmundResponse The response from Edmund API on completion
+    */
+    func getConsumerRatingsAndReviewsByCarStyleId(#styleid: String, sortby: String, pagenum: String, pagesize: String, edmundResponse: EdmundResponse) -> Void {
+        vehicleContent.getConsumerRatingsAndReviewsByCarStyleId(styleid: styleid, sortby: sortby, pagenum: pagenum, pagesize: pagesize, edmundResponse: edmundResponse)
     }
     
     //MARK: HELPER METHODS

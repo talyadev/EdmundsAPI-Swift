@@ -23,6 +23,9 @@
 		83BD95B11A7BDF490074AECB /* VehiclePricing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BD95AF1A7BDF490074AECB /* VehiclePricing.swift */; };
 		83BD95B31A7BE0C60074AECB /* VehiclePricing_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BD95B21A7BE0C60074AECB /* VehiclePricing_SwiftTests.swift */; };
 		83BD95B41A7BEBBF0074AECB /* VehicleSpecs_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839229571A79BAAB001E098F /* VehicleSpecs_SwiftTests.swift */; };
+		83C861B31A7D3C8700D1ED16 /* VehicleContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C861B21A7D3C8700D1ED16 /* VehicleContent.swift */; };
+		83C861B41A7D3C8700D1ED16 /* VehicleContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C861B21A7D3C8700D1ED16 /* VehicleContent.swift */; };
+		83C861B71A7D3E8900D1ED16 /* VehicleContent_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C861B51A7D3E7C00D1ED16 /* VehicleContent_SwiftTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +55,8 @@
 		83BD95AC1A7BDB640074AECB /* VehicleMedia_SwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleMedia_SwiftTests.swift; sourceTree = "<group>"; };
 		83BD95AF1A7BDF490074AECB /* VehiclePricing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehiclePricing.swift; sourceTree = "<group>"; };
 		83BD95B21A7BE0C60074AECB /* VehiclePricing_SwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehiclePricing_SwiftTests.swift; sourceTree = "<group>"; };
+		83C861B21A7D3C8700D1ED16 /* VehicleContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleContent.swift; sourceTree = "<group>"; };
+		83C861B51A7D3E7C00D1ED16 /* VehicleContent_SwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleContent_SwiftTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +123,7 @@
 				839229571A79BAAB001E098F /* VehicleSpecs_SwiftTests.swift */,
 				83BD95AC1A7BDB640074AECB /* VehicleMedia_SwiftTests.swift */,
 				83BD95B21A7BE0C60074AECB /* VehiclePricing_SwiftTests.swift */,
+				83C861B51A7D3E7C00D1ED16 /* VehicleContent_SwiftTests.swift */,
 				839229451A79BA6E001E098F /* Supporting Files */,
 			);
 			path = EdmundsAPITests;
@@ -138,6 +144,7 @@
 				839229621A79BF1F001E098F /* VehicleSpecs.swift */,
 				83BD95A91A7BD9CE0074AECB /* VehicleMedia.swift */,
 				83BD95AF1A7BDF490074AECB /* VehiclePricing.swift */,
+				83C861B21A7D3C8700D1ED16 /* VehicleContent.swift */,
 			);
 			path = "EdmundsAPI-Swift";
 			sourceTree = "<group>";
@@ -242,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83C861B31A7D3C8700D1ED16 /* VehicleContent.swift in Sources */,
 				839229631A79BF1F001E098F /* EdmundsAPIManager.swift in Sources */,
 				839229341A79BA6E001E098F /* ViewController.swift in Sources */,
 				83BD95AA1A7BD9CE0074AECB /* VehicleMedia.swift in Sources */,
@@ -257,8 +265,10 @@
 			files = (
 				83BD95B31A7BE0C60074AECB /* VehiclePricing_SwiftTests.swift in Sources */,
 				83BD95B41A7BEBBF0074AECB /* VehicleSpecs_SwiftTests.swift in Sources */,
+				83C861B41A7D3C8700D1ED16 /* VehicleContent.swift in Sources */,
 				83BD95AB1A7BD9CE0074AECB /* VehicleMedia.swift in Sources */,
 				839229661A79BF1F001E098F /* VehicleSpecs.swift in Sources */,
+				83C861B71A7D3E8900D1ED16 /* VehicleContent_SwiftTests.swift in Sources */,
 				83BD95AE1A7BDB640074AECB /* VehicleMedia_SwiftTests.swift in Sources */,
 				839229641A79BF1F001E098F /* EdmundsAPIManager.swift in Sources */,
 				83BD95B11A7BDF490074AECB /* VehiclePricing.swift in Sources */,
