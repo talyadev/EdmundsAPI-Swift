@@ -62,6 +62,7 @@
 		83C861B51A7D3E7C00D1ED16 /* VehicleContent_SwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleContent_SwiftTests.swift; sourceTree = "<group>"; };
 		83C861BB1A7D46DB00D1ED16 /* VehicleService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleService.swift; sourceTree = "<group>"; };
 		83C861C01A7D477F00D1ED16 /* VehicleService_SwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleService_SwiftTests.swift; sourceTree = "<group>"; };
+		83C861C21A7D6D9100D1ED16 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				839229461A79BA6E001E098F /* Info.plist */,
+				83C861C21A7D6D9100D1ED16 /* README.md */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
