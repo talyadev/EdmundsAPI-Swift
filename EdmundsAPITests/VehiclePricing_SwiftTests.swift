@@ -123,4 +123,29 @@ class VehiclePricing_SwiftTests: XCTestCase {
             XCTAssertNil(error, "error")
         })
     }
+    
+    
+    func testCalculateForNewVehicleWithCarMakeYearMSRPAndZipcode() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.calculateForNewVehicleWithCarMakeYearMSRPAndZipcode(makeNiceName: "honda", year: "2013", msrp: "32000", zip: "90404", color: nil, model: nil, vehicleStyle: nil, drivenWheels: nil, fuelType: nil, cylinders: nil, compressorType: nil, trim: nil) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
+    
+    // Color, model, vehicleStyle, drivenWheels, fuelType, cylinders, compressorType, and trim can be nil or given a value. Mix and match to test.
+    func testCalculateForNewVehicleWithCarMakeYearMSRPAndZipcode_Etc() {
+        let readyExpectation = self.expectationWithDescription("ready")
+        manager.calculateForNewVehicleWithCarMakeYearMSRPAndZipcode(makeNiceName: "honda", year: "2013", msrp: "32000", zip: "90404", color: "black", model: "accord", vehicleStyle: EdmundsAPIManager.CATEGORY.kSEDAN, drivenWheels: EdmundsAPIManager.CATEGORYDRIVENWHEELS.kFRONTWHEELDRIVE, fuelType: EdmundsAPIManager.CATEGORYFUELTYPE.kGAS, cylinders: "4", compressorType: nil, trim: nil) { (dictionary: NSDictionary?, error: NSError?) -> Void in
+            XCTAssertNotNil(dictionary, "dictionary is nil")
+            readyExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5, handler: { (error: NSError!) -> Void in
+            XCTAssertNil(error, "error")
+        })
+    }
+    
 }
